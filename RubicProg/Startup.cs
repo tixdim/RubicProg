@@ -1,10 +1,14 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using RubicProg.DataAccess.Context;
+using RubicProg.DataAccess.Core.Interfaces.DBContext;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,8 +27,11 @@ namespace RubicProg
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
-        {
+        { 
+            services.AddDbContext<IDbContext, DataBaseContext>(o => o.UseSqlite("Data Source=user.db"));
+            
             services.AddControllers();
+            services.AddCors();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -35,9 +42,25 @@ namespace RubicProg
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseCors(p => p.AllowAnyMethod().AllowAnyHeader());
+
             app.UseRouting();
 
+            app.UseForwardedHeaders(new ForwardedHeadersOptions
+            {
+                ForwardedHeaders = ForwardedHeaders.XForwardedFor
+                | ForwardedHeaders.XForwardedProto
+            });
+
             app.UseAuthorization();
+
+            using var scope = app.ApplicationServices.CreateScope();
+
+            /*var mapper = scope.ServiceProvider.GetRequiredService<IMapper>();
+            mapper.ConfigurationProvider.AssertConfigurationIsValid();*/
+
+            var dbContext = scope.ServiceProvider.GetRequiredService<DataBaseContext>();
+            dbContext.Database.Migrate();
 
             app.UseEndpoints(endpoints =>
             {

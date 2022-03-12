@@ -1,12 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Microsoft.EntityFrameworkCore;
+using RubicProg.DataAccess.Core.Models;
+using System;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace RubicProg.DataAccess.Core.Interfaces.DBContext
 {
-    public interface IDbContext
+    public interface IDbContext : IDisposable, IAsyncDisposable
     {
-        public int Id { get; set; }
+        DbSet<UserRto> Users { get; set; }
+        Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
     }
 }

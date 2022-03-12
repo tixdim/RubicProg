@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "k5eILwZXxyHKws6g6mXmI7gdHwf/gVDBzWJg3JJzOpHU9676dOaG7/fhC0grfUB8edgrJsY0OTaZib9giKg1+g==",
+  "dgSpecHash": "0U2Fx5Tlel2q8+e4Y4i0qwekGNixt4MLqdMoMVFhVcVQU7opKqcZItlAN1VTFQ9LcIn2Jy4XUhHFV/JlwhypaQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\StudentDev\\source\\repos\\RubicProg\\RubicProg\\RubicProg.csproj",
+  "projectFilePath": "C:\\Users\\StudentDev\\Documents\\GitHub\\RubicProg\\RubicProg\\RubicProg.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\StudentDev\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
     "C:\\Users\\StudentDev\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\StudentDev\\.nuget\\packages\\microsoft.bcl.hashcode\\1.1.1\\microsoft.bcl.hashcode.1.1.1.nupkg.sha512",
     "C:\\Users\\StudentDev\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
@@ -37,6 +38,7 @@
     "C:\\Users\\StudentDev\\.nuget\\packages\\system.componentmodel.annotations\\4.7.0\\system.componentmodel.annotations.4.7.0.nupkg.sha512",
     "C:\\Users\\StudentDev\\.nuget\\packages\\system.diagnostics.diagnosticsource\\4.7.1\\system.diagnostics.diagnosticsource.4.7.1.nupkg.sha512",
     "C:\\Users\\StudentDev\\.nuget\\packages\\system.memory\\4.5.3\\system.memory.4.5.3.nupkg.sha512",
+    "C:\\Users\\StudentDev\\.nuget\\packages\\system.reflection.emit\\4.7.0\\system.reflection.emit.4.7.0.nupkg.sha512",
     "C:\\Users\\StudentDev\\.nuget\\packages\\system.text.json\\4.7.2\\system.text.json.4.7.2.nupkg.sha512"
   ],
   "logs": []

@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace RubicProg.BusinessLogic.Core.Models
 {
-    public class UserUpdateBlo
+    public class UserUpdateDobleBlo
     {
         public int Id { get; set; }
         public string Email { get; set; }

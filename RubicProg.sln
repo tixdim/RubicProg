@@ -5,20 +5,6 @@ VisualStudioVersion = 16.0.30717.126
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RubicProg", "RubicProg\RubicProg.csproj", "{570FA564-2BCB-49C1-BAE5-4E37DD046526}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API", "API", "{7235069E-8F62-4167-A1FD-20E28C9E7687}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataAccess", "DataAccess", "{BF117698-4ED1-49BC-BC0E-8965CC7333DF}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BusinessLogic", "BusinessLogic", "{931B9356-64C4-4640-919A-50C7F3D0988B}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{A5EDABEF-8FC2-445C-968E-354BCD1F22F4}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "RubicProg.BusinessLogic", "RubicProg.BusinessLogic", "{82B8B164-8A9D-4CEA-9992-4280D4E7C705}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "RubicProg.BusinessLogic.Core", "RubicProg.BusinessLogic.Core", "{1E2741B1-2CDD-4A04-8134-7A6249A39845}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RubicProg.DataAccess", "RubicProg.DataAccess\RubicProg.DataAccess.csproj", "{B0AB0298-B071-4241-9658-34E76A27BA8E}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,19 +15,9 @@ Global
 		{570FA564-2BCB-49C1-BAE5-4E37DD046526}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{570FA564-2BCB-49C1-BAE5-4E37DD046526}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{570FA564-2BCB-49C1-BAE5-4E37DD046526}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B0AB0298-B071-4241-9658-34E76A27BA8E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B0AB0298-B071-4241-9658-34E76A27BA8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B0AB0298-B071-4241-9658-34E76A27BA8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B0AB0298-B071-4241-9658-34E76A27BA8E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{570FA564-2BCB-49C1-BAE5-4E37DD046526} = {7235069E-8F62-4167-A1FD-20E28C9E7687}
-		{82B8B164-8A9D-4CEA-9992-4280D4E7C705} = {931B9356-64C4-4640-919A-50C7F3D0988B}
-		{1E2741B1-2CDD-4A04-8134-7A6249A39845} = {931B9356-64C4-4640-919A-50C7F3D0988B}
-		{B0AB0298-B071-4241-9658-34E76A27BA8E} = {BF117698-4ED1-49BC-BC0E-8965CC7333DF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {33EDE901-2082-40DA-815C-7B8916A275A0}

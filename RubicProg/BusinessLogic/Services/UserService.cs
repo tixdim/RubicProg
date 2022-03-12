@@ -76,6 +76,17 @@ namespace RubicProg.BusinessLogic.Services
 
         }
 
+ 
+
+
+        private async Task<WorkoutPlanBlo> ConvertToWorkoutInfoAsync(WorkoutRto workout)
+        {
+            if(workout == null) throw new ArgumentNullException(nameof(workout));
+
+            WorkoutPlanBlo workoutPlanBlo = _mapper.Map<WorkoutPlanBlo>(workout);
+
+            return workoutPlanBlo;
+        }
         private async Task<UserUpdateBlo> ConvertToUserInformationAsync(UserRto userRto)
         {
             if (userRto == null) throw new ArgumentNullException(nameof(userRto));
@@ -83,6 +94,42 @@ namespace RubicProg.BusinessLogic.Services
             UserUpdateBlo userInformationBlo = _mapper.Map<UserUpdateBlo>(userRto);
 
             return userInformationBlo;
+        }
+        private async Task<UserProfileBlo> ConvertToPrfileInfo(ProfileUserRto profileUser)
+        {
+            if(profileUser == null) throw new ArgumentNullException(nameof(profileUser));
+
+            UserProfileBlo userProfileInfoBlo = _mapper.Map<UserProfileBlo>(profileUser);
+            return userProfileInfoBlo;
+        }
+
+       
+
+        public async Task<WorkoutPlanBlo> UpdateWorkoutPlanBlo(int two, WorkoutPlanUpdateBlo workoutPlanUpdateBlo)
+        {
+            WorkoutRto workout = await _context.Workouts.FirstOrDefaultAsync(y => y.UserWhoTrainingId == two);
+            if(workout == null) throw new NotFoundException("тренеровка с таким id не найдена");
+            workout.Exercise = workoutPlanUpdateBlo.Exercise;
+            workout.WorkoutTime = workoutPlanUpdateBlo.WorkoutTime;
+            workout.IsDone = workoutPlanUpdateBlo.IsDone;
+
+            WorkoutPlanBlo workoutInfo = await ConvertToWorkoutInfoAsync(workout);
+            return workoutInfo;
+
+        }
+
+        public async Task<UserProfileBlo> UpdateUserProfile(int one, UserProfileUpdateBlo userProfileUpdateBlo)
+        {
+            ProfileUserRto profileUser = await _context.ProfileUsers.FirstOrDefaultAsync(y => y.UserWhoProfileId == one);
+            if (profileUser == null) throw new NotFoundException("профиль с таким id не найден");
+            profileUser.IsBoy = userProfileUpdateBlo.IsBoy;
+            profileUser.Name = userProfileUpdateBlo.Name;
+            profileUser.Surname = userProfileUpdateBlo.Surname;
+            profileUser.AvatarUrl = userProfileUpdateBlo.AvatarUrl;
+
+            UserProfileBlo userProfileBloInfo = await ConvertToPrfileInfo(profileUser);
+            return userProfileBloInfo;
+
         }
     }
 }

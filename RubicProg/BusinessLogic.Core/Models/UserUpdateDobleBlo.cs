@@ -11,10 +11,5 @@ namespace RubicProg.BusinessLogic.Core.Models
         public string Email { get; set; }
         public string Password { get; set; }
         public string NickName { get; set; }
-
-        public static implicit operator UserUpdateDobleBlo(UserUpdateBlo v)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

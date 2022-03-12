@@ -71,8 +71,9 @@ namespace RubicProg.BusinessLogic.Services
             user.Password = userUpdateDobleBlo.Password;
             user.NickName = userUpdateDobleBlo.NickName;
 
-            UserUpdateBlo userUpdateBlo = await ConvertToUserInformationAsync(user);
-            return userUpdateBlo;
+            UserUpdateBlo userInfoBlo = await ConvertToUserInformationAsync(user);
+            return userInfoBlo;
+
         }
 
         private async Task<UserUpdateBlo> ConvertToUserInformationAsync(UserRto userRto)

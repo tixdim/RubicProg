@@ -12,8 +12,17 @@ namespace RubicProg.BusinessLogic.AutoMapperProfile
     {
         public BusinessLogicProfile()
         {
-            CreateMap<UserRto, UserUpdateBlo>();
-            CreateMap<UserRto, UserUpdateDobleBlo>();
+            CreateMap<UserRto, UserUpdateBlo>()
+            .ForMember(x => x.Id, x => x.MapFrom(m => m.Id))
+            .ForMember(x => x.Email, x => x.MapFrom(m => m.Email))
+            .ForMember(x => x.Password, x => x.MapFrom(m => m.Password))
+            .ForMember(x => x.NickName, x => x.MapFrom(m => m.NickName)); 
+            CreateMap<UserRto, UserUpdateDobleBlo>()
+            .ForMember(x=> x.Id, x => x.MapFrom(m => m.Id))
+            .ForMember(x => x.Email, x => x.MapFrom(m => m.Email))
+            .ForMember(x => x.Password, x => x.MapFrom(m => m.Password))
+            .ForMember(x => x.NickName, x => x.MapFrom(m => m.NickName));
+           
         }
     }
 }

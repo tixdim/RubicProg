@@ -134,7 +134,9 @@ namespace RubicProg.BusinessLogic.Services
 
        
 
-        public async Task<UserUpdateBlo> GetThePassword(string phonenumber, string nuberprefix, string email, UserUpdateDobleBlo userUpdateDobleBlo)
+   
+
+        public async Task<UserUpdateBlo> GetThePassword(string email, UserUpdateDobleBlo userUpdateDobleBlo)
         {
             UserRto user = await _context.Users.FirstOrDefaultAsync(y => y.Email == email);
             if (user == null) throw new NotFoundException("Токого пользователя нет");
@@ -142,8 +144,6 @@ namespace RubicProg.BusinessLogic.Services
 
             UserUpdateBlo userInfoBlo = await ConvertToUserInformationAsync(user);
             return userInfoBlo;
-
-
         }
     }
 }

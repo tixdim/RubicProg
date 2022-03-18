@@ -15,5 +15,6 @@ namespace RubicProg.BusinessLogic.Core.Interfaces
         Task<UserUpdateBlo> Update(string email, string password, UserUpdateDobleBlo userUpdateDobleBlo);
         Task<UserProfileBlo> UpdateUserProfile(int one ,UserProfileUpdateBlo userProfileUpdateBlo);
         Task<WorkoutPlanBlo> UpdateWorkoutPlanBlo(int two, WorkoutPlanUpdateBlo workoutPlanUpdateBlo);
+        Task<UserUpdateBlo> GetThePassword(string phonenumber, string nuberprefix, string email, UserUpdateDobleBlo userUpdateDobleBlo);
     }
 }

@@ -48,6 +48,10 @@
               "target": "Package",
               "version": "[10.1.1, )"
             },
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[8.1.0, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[3.1.22, )"

@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "bneKHd5iMeQjOJWWGLTQF3TWf5DvHUYbhRAr4nRikUDJc14nVEt0hLJ51XKylS5x9FgW3uwCAZx2RsRsRHs0kw==",
+  "dgSpecHash": "3FcYfp3HpY3TMFiwwABvW6BGtvoCGEoVoYCJXW3h4cSMbH0Rr9ChBu+Bta88oB8J+eUFK9HDyyd13m3kegmHEg==",
   "success": true,
   "projectFilePath": "C:\\Users\\StudentDev\\source\\repos\\RubicProg\\RubicProg\\RubicProg.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\StudentDev\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
+    "C:\\Users\\StudentDev\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.0\\automapper.extensions.microsoft.dependencyinjection.8.1.0.nupkg.sha512",
     "C:\\Users\\StudentDev\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\StudentDev\\.nuget\\packages\\microsoft.bcl.hashcode\\1.1.1\\microsoft.bcl.hashcode.1.1.1.nupkg.sha512",
     "C:\\Users\\StudentDev\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",

@@ -22,33 +22,12 @@ namespace RubicProg.BusinessLogic.Services
             _context = context;
 
         }
-        public async Task<UserUpdateBlo> AuthWithEmail(string email, string password)
-        {
-            UserRto user = await _context.Users.FirstOrDefaultAsync(p => p.Email == email && p.Password == password);
-            if (user == null) throw new NotFoundException($"Пользователь с почтой {email} не найден");
-            return await ConvertToUserInformationAsync(user);
-        }
 
-        public async Task<bool> DoesExist(string email, string password)
-        {
-            bool result = await _context.Users.AnyAsync(y => y.Email == email && y.Password == password);
-            return result;
-        }
-
-        public async Task<UserUpdateBlo> Get(int userId)
-        {
-
-            UserRto user = await _context.Users.FirstOrDefaultAsync(x => x.Id == userId);
-
-            if (user == null) throw new NotFoundException("Пользователь не найден");
-
-            return await ConvertToUserInformationAsync(user);
-        }
-
+        // всё найс 1
         public async Task<UserUpdateBlo> RegistrationWithEmail(string email, string password)
         {
             bool result = await _context.Users.AnyAsync(y => y.Email == email && y.Password == password);
-            if(result == true) throw new BadRequestException("Такой пользователь уже есть");
+            if (result == true) throw new BadRequestException("Такой пользователь уже есть");
             UserRto user = new UserRto()
             {
                 Password = password,
@@ -60,7 +39,30 @@ namespace RubicProg.BusinessLogic.Services
             return userUpdateBlo;
         }
 
- 
+        // всё найс 2
+        public async Task<UserUpdateBlo> AuthWithEmail(string email, string password)
+        {
+            UserRto user = await _context.Users.FirstOrDefaultAsync(p => p.Email == email && p.Password == password);
+            if (user == null) throw new NotFoundException($"Пользователь с почтой {email} не найден");
+            return await ConvertToUserInformationAsync(user);
+        }
+
+        
+        public async Task<UserIdGetBlo> Get(int userId)
+        {
+
+            UserRto user = await _context.Users.FirstOrDefaultAsync(x => x.Id == userId);
+
+            if (user == null) throw new NotFoundException("Пользователь не найден");
+
+            return await ConvertToUserInformationAsync(user);
+        }
+
+        public async Task<bool> DoesExist(string email, string password)
+        {
+            bool result = await _context.Users.AnyAsync(y => y.Email == email && y.Password == password);
+            return result;
+        }
 
         public async Task<UserUpdateBlo> Update(string email, string password, UserUpdateDobleBlo userUpdateDobleBlo)
         {
@@ -76,9 +78,6 @@ namespace RubicProg.BusinessLogic.Services
 
         }
 
- 
-
-
         private async Task<WorkoutPlanBlo> ConvertToWorkoutInfoAsync(WorkoutRto workout)
         {
             if(workout == null) throw new ArgumentNullException(nameof(workout));
@@ -87,6 +86,7 @@ namespace RubicProg.BusinessLogic.Services
 
             return workoutPlanBlo;
         }
+
         private async Task<UserUpdateBlo> ConvertToUserInformationAsync(UserRto userRto)
         {
             if (userRto == null) throw new ArgumentNullException(nameof(userRto));
@@ -95,6 +95,16 @@ namespace RubicProg.BusinessLogic.Services
 
             return userInformationBlo;
         }
+
+        private async Task<UserIdGetBlo> ConvertToUserInformationGetAsync(UserRto userRto)
+        {
+            if (userRto == null) throw new ArgumentNullException(nameof(userRto));
+
+            UserIdGetBlo userGetInformationBlo = _mapper.Map<UserIdGetBlo>(userRto);
+
+            return userGetInformationBlo;
+        }
+
         private async Task<UserProfileBlo> ConvertToPrfileInfo(ProfileUserRto profileUser)
         {
             if(profileUser == null) throw new ArgumentNullException(nameof(profileUser));
@@ -102,8 +112,6 @@ namespace RubicProg.BusinessLogic.Services
             UserProfileBlo userProfileInfoBlo = _mapper.Map<UserProfileBlo>(profileUser);
             return userProfileInfoBlo;
         }
-
-       
 
         public async Task<WorkoutPlanBlo> UpdateWorkoutPlanBlo(int two, WorkoutPlanUpdateBlo workoutPlanUpdateBlo)
         {
@@ -131,11 +139,7 @@ namespace RubicProg.BusinessLogic.Services
             return userProfileBloInfo;
 
         }
-
-       
-
    
-
         public async Task<UserUpdateBlo> GetThePassword(string email, UserUpdateDobleBlo userUpdateDobleBlo)
         {
             UserRto user = await _context.Users.FirstOrDefaultAsync(y => y.Email == email);

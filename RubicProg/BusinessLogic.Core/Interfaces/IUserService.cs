@@ -8,10 +8,11 @@ namespace RubicProg.BusinessLogic.Core.Interfaces
         Task<UserUpdateBlo> RegistrationWithEmail(string email, string password);
         Task<UserUpdateBlo> AuthWithEmail(string email, string password);
         Task<UserIdGetBlo> Get(int userId);
-        Task<bool> DoesExist(string email, string password);
-        Task<UserUpdateBlo> Update(string email, string password, UserUpdateDobleBlo userUpdateDobleBlo);
-        Task<UserProfileBlo> UpdateUserProfile(int one ,UserProfileUpdateBlo userProfileUpdateBlo);
-        Task<WorkoutPlanBlo> UpdateWorkoutPlanBlo(int two, WorkoutPlanUpdateBlo workoutPlanUpdateBlo);
-        Task<UserUpdateBlo> GetThePassword(string email, UserUpdateDobleBlo userUpdateDobleBlo);
+        Task<bool> DoesExist(int id);
+        Task<UserUpdateBlo> Update(int id, UserUpdateDobleBlo userUpdateDobleBlo);
+        Task<UserProfileBlo> UpdateUserProfile(int userWhoProfileId ,UserProfileUpdateBlo userProfileUpdateBlo);
+        Task<WorkoutPlanBlo> UpdateWorkoutPlanBlo(int userWhoProfileId, WorkoutPlanUpdateBlo workoutPlanUpdateBlo);
+        Task<bool> GetThePassword(string email);
+        // всё вроде найс, исправить мапперы и добавить обновление пароля по почте
     }
 }

@@ -1,8 +1,6 @@
 ﻿using RubicProg.BusinessLogic.Core.Interfaces;
 using RubicProg.BusinessLogic.Core.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using RubicProg.DataAccess.Core.Interfaces.DBContext;
@@ -27,15 +25,20 @@ namespace RubicProg.BusinessLogic.Services
         public async Task<UserUpdateBlo> RegistrationWithEmail(string email, string password)
         {
             bool result = await _context.Users.AnyAsync(y => y.Email == email && y.Password == password);
+            
             if (result == true) throw new BadRequestException("Такой пользователь уже есть");
+            
             UserRto user = new UserRto()
             {
                 Password = password,
                 Email = email
             };
+            
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
+            
             UserUpdateBlo userUpdateBlo = await ConvertToUserInformationAsync(user);
+            
             return userUpdateBlo;
         }
 
@@ -43,11 +46,13 @@ namespace RubicProg.BusinessLogic.Services
         public async Task<UserUpdateBlo> AuthWithEmail(string email, string password)
         {
             UserRto user = await _context.Users.FirstOrDefaultAsync(p => p.Email == email && p.Password == password);
+            
             if (user == null) throw new NotFoundException($"Пользователь с почтой {email} не найден");
+            
             return await ConvertToUserInformationAsync(user);
         }
 
-        
+        // всё найс 3
         public async Task<UserIdGetBlo> Get(int userId)
         {
 
@@ -55,27 +60,71 @@ namespace RubicProg.BusinessLogic.Services
 
             if (user == null) throw new NotFoundException("Пользователь не найден");
 
-            return await ConvertToUserInformationAsync(user);
+            return await ConvertToUserInformationGetAsync(user);
         }
 
-        public async Task<bool> DoesExist(string email, string password)
+        // всё найс 4
+        public async Task<bool> DoesExist(int id)
         {
-            bool result = await _context.Users.AnyAsync(y => y.Email == email && y.Password == password);
+            bool result = await _context.Users.AnyAsync(y => y.Id == id);
+
             return result;
         }
 
-        public async Task<UserUpdateBlo> Update(string email, string password, UserUpdateDobleBlo userUpdateDobleBlo)
+        // всё найс 5
+        public async Task<UserUpdateBlo> Update(int id, UserUpdateDobleBlo userUpdateDobleBlo)
         {
-            UserRto user = await _context.Users.FirstOrDefaultAsync(y => y.Email == email && y.Password == password);
-            if (user == null) throw new NotFoundException("Токого пользователя нет");
+            UserRto user = await _context.Users.FirstOrDefaultAsync(y => y.Id == id);
+            if (user == null) throw new NotFoundException("Такого пользователя нет");
 
             user.Email = userUpdateDobleBlo.Email;
             user.Password = userUpdateDobleBlo.Password;
             user.NickName = userUpdateDobleBlo.NickName;
 
             UserUpdateBlo userInfoBlo = await ConvertToUserInformationAsync(user);
+            
             return userInfoBlo;
+        }
 
+        // всё найс 6 (доделать маппер)
+        public async Task<UserProfileBlo> UpdateUserProfile(int userWhoProfileId, UserProfileUpdateBlo userProfileUpdateBlo)
+        {
+            ProfileUserRto profileUser = await _context.ProfileUsers.FirstOrDefaultAsync(y => y.UserWhoProfileId == userWhoProfileId);
+            
+            if (profileUser == null) throw new NotFoundException("Профиль с таким id не найден");
+
+            profileUser.IsBoy = userProfileUpdateBlo.IsBoy;
+            profileUser.Name = userProfileUpdateBlo.Name;
+            profileUser.Surname = userProfileUpdateBlo.Surname;
+            profileUser.Birthday = userProfileUpdateBlo.Birthday;
+            profileUser.AvatarUrl = userProfileUpdateBlo.AvatarUrl;
+
+            UserProfileBlo userProfileBloInfo = await ConvertToProfileInfo(profileUser);
+            
+            return userProfileBloInfo;
+        }
+
+        // всё найс 7 (доделать маппер)
+        public async Task<WorkoutPlanBlo> UpdateWorkoutPlanBlo(int userWhoProfileId, WorkoutPlanUpdateBlo workoutPlanUpdateBlo)
+        {
+            WorkoutRto workout = await _context.Workouts.FirstOrDefaultAsync(y => y.UserWhoTrainingId == userWhoProfileId);
+            
+            if (workout == null) throw new NotFoundException("Тренировка с таким id не найдена");
+            
+            workout.Exercise = workoutPlanUpdateBlo.Exercise;
+            workout.WorkoutTime = workoutPlanUpdateBlo.WorkoutTime;
+
+            WorkoutPlanBlo workoutInfo = await ConvertToWorkoutInfoAsync(workout);
+            
+            return workoutInfo;
+        }
+
+        // всё найс 8
+        public async Task<bool> GetThePassword(string email)
+        {
+            bool result = await _context.Users.AnyAsync(y => y.Email == email);
+
+            return result;
         }
 
         private async Task<WorkoutPlanBlo> ConvertToWorkoutInfoAsync(WorkoutRto workout)
@@ -105,49 +154,13 @@ namespace RubicProg.BusinessLogic.Services
             return userGetInformationBlo;
         }
 
-        private async Task<UserProfileBlo> ConvertToPrfileInfo(ProfileUserRto profileUser)
+        private async Task<UserProfileBlo> ConvertToProfileInfo(ProfileUserRto profileUser)
         {
             if(profileUser == null) throw new ArgumentNullException(nameof(profileUser));
 
             UserProfileBlo userProfileInfoBlo = _mapper.Map<UserProfileBlo>(profileUser);
+
             return userProfileInfoBlo;
-        }
-
-        public async Task<WorkoutPlanBlo> UpdateWorkoutPlanBlo(int two, WorkoutPlanUpdateBlo workoutPlanUpdateBlo)
-        {
-            WorkoutRto workout = await _context.Workouts.FirstOrDefaultAsync(y => y.UserWhoTrainingId == two);
-            if(workout == null) throw new NotFoundException("тренеровка с таким id не найдена");
-            workout.Exercise = workoutPlanUpdateBlo.Exercise;
-            workout.WorkoutTime = workoutPlanUpdateBlo.WorkoutTime;
-            workout.IsDone = workoutPlanUpdateBlo.IsDone;
-
-            WorkoutPlanBlo workoutInfo = await ConvertToWorkoutInfoAsync(workout);
-            return workoutInfo;
-
-        }
-
-        public async Task<UserProfileBlo> UpdateUserProfile(int one, UserProfileUpdateBlo userProfileUpdateBlo)
-        {
-            ProfileUserRto profileUser = await _context.ProfileUsers.FirstOrDefaultAsync(y => y.UserWhoProfileId == one);
-            if (profileUser == null) throw new NotFoundException("профиль с таким id не найден");
-            profileUser.IsBoy = userProfileUpdateBlo.IsBoy;
-            profileUser.Name = userProfileUpdateBlo.Name;
-            profileUser.Surname = userProfileUpdateBlo.Surname;
-            profileUser.AvatarUrl = userProfileUpdateBlo.AvatarUrl;
-
-            UserProfileBlo userProfileBloInfo = await ConvertToPrfileInfo(profileUser);
-            return userProfileBloInfo;
-
-        }
-   
-        public async Task<UserUpdateBlo> GetThePassword(string email, UserUpdateDobleBlo userUpdateDobleBlo)
-        {
-            UserRto user = await _context.Users.FirstOrDefaultAsync(y => y.Email == email);
-            if (user == null) throw new NotFoundException("Токого пользователя нет");
-            user.Password = userUpdateDobleBlo.Password;
-
-            UserUpdateBlo userInfoBlo = await ConvertToUserInformationAsync(user);
-            return userInfoBlo;
         }
     }
 }

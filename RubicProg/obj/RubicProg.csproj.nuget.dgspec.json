@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\StudentDev\\source\\repos\\RubicProg\\RubicProg\\RubicProg.csproj": {}
+    "C:\\Users\\StudentDev\\Documents\\GitHub\\RubicProg\\RubicProg\\RubicProg.csproj": {}
   },
   "projects": {
-    "C:\\Users\\StudentDev\\source\\repos\\RubicProg\\RubicProg\\RubicProg.csproj": {
+    "C:\\Users\\StudentDev\\Documents\\GitHub\\RubicProg\\RubicProg\\RubicProg.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\StudentDev\\source\\repos\\RubicProg\\RubicProg\\RubicProg.csproj",
+        "projectUniqueName": "C:\\Users\\StudentDev\\Documents\\GitHub\\RubicProg\\RubicProg\\RubicProg.csproj",
         "projectName": "RubicProg",
-        "projectPath": "C:\\Users\\StudentDev\\source\\repos\\RubicProg\\RubicProg\\RubicProg.csproj",
+        "projectPath": "C:\\Users\\StudentDev\\Documents\\GitHub\\RubicProg\\RubicProg\\RubicProg.csproj",
         "packagesPath": "C:\\Users\\StudentDev\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\StudentDev\\source\\repos\\RubicProg\\RubicProg\\obj\\",
+        "outputPath": "C:\\Users\\StudentDev\\Documents\\GitHub\\RubicProg\\RubicProg\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\"

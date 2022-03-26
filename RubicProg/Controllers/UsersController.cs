@@ -1,11 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using RubicProg.BusinessLogic.Core.Interfaces;
 using RubicProg.BusinessLogic.Core.Models;
-using RubicProg.Controllers.Models;
 using Share.Exceptions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace RubicProg.Controllers
@@ -71,7 +67,7 @@ namespace RubicProg.Controllers
             return await _userService.DoesExist(id);
         }
 
-        [HttpPost("[action]/{id}")]
+        [HttpPatch("[action]/{id}")]
         public async Task<ActionResult<UserUpdateBlo>> Update([FromRoute] int id, [FromBody] UserUpdateDobleBlo userUpdateDobleBlo )
         {
             UserUpdateBlo user;
@@ -90,7 +86,7 @@ namespace RubicProg.Controllers
             return user;
 
         }
-        [HttpPost("[acton]/{userWhoProfileId}")]
+        [HttpPatch("[action]/{userWhoProfileId}")]
         public async Task<ActionResult<UserProfileBlo>> UpdateUserProfile([FromRoute] int userWhoProfileId, [FromBody] UserProfileUpdateBlo userProfileUpdateBlo)
         {
             UserProfileBlo user;
@@ -109,7 +105,7 @@ namespace RubicProg.Controllers
             return user;
         }
 
-        [HttpPost("[action]/{userWhoProfileId}")]
+        [HttpPatch("[action]/{userWhoProfileId}")]
         public async Task<ActionResult<WorkoutPlanBlo>> UpdateWorkoutPlanBlo([FromRoute] int userWhoProfileId, [FromBody] WorkoutPlanUpdateBlo workoutPlanUpdateBlo)
         {
             WorkoutPlanBlo user;

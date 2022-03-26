@@ -86,7 +86,7 @@ namespace RubicProg.BusinessLogic.Services
             return userInfoBlo;
         }
 
-        // всё найс 6 (доделать маппер)
+        // всё найс 6
         public async Task<UserProfileBlo> UpdateUserProfile(int userWhoProfileId, UserProfileUpdateBlo userProfileUpdateBlo)
         {
             ProfileUserRto profileUser = await _context.ProfileUsers.FirstOrDefaultAsync(y => y.UserWhoProfileId == userWhoProfileId);
@@ -104,7 +104,7 @@ namespace RubicProg.BusinessLogic.Services
             return userProfileBloInfo;
         }
 
-        // всё найс 7 (доделать маппер)
+        // всё найс 7 
         public async Task<WorkoutPlanBlo> UpdateWorkoutPlanBlo(int userWhoProfileId, WorkoutPlanUpdateBlo workoutPlanUpdateBlo)
         {
             WorkoutRto workout = await _context.Workouts.FirstOrDefaultAsync(y => y.UserWhoTrainingId == userWhoProfileId);

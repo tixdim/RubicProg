@@ -185,3 +185,4 @@ C:\Users\StudentDev\Documents\GitHub\RubicProg\RubicProg\obj\Debug\netcoreapp3.1
 C:\Users\StudentDev\Documents\GitHub\RubicProg\RubicProg\obj\Debug\netcoreapp3.1\RubicProg.dll
 C:\Users\StudentDev\Documents\GitHub\RubicProg\RubicProg\obj\Debug\netcoreapp3.1\RubicProg.pdb
 C:\Users\StudentDev\Documents\GitHub\RubicProg\RubicProg\obj\Debug\netcoreapp3.1\RubicProg.genruntimeconfig.cache
+C:\Users\StudentDev\source\repos\RubicProg\RubicProg\obj\Debug\netcoreapp3.1\RubicProg.csprojAssemblyReference.cache

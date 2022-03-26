@@ -5,9 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Controllers\Models\**" />
     <Compile Remove="Migrations\**" />
+    <Content Remove="Controllers\Models\**" />
     <Content Remove="Migrations\**" />
+    <EmbeddedResource Remove="Controllers\Models\**" />
     <EmbeddedResource Remove="Migrations\**" />
+    <None Remove="Controllers\Models\**" />
     <None Remove="Migrations\**" />
   </ItemGroup>
 

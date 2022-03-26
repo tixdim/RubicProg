@@ -47,7 +47,6 @@ C:\Users\StudentDev\source\repos\RubicProg\RubicProg\bin\Debug\netcoreapp3.1\run
 C:\Users\StudentDev\source\repos\RubicProg\RubicProg\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\e_sqlite3.dll
 C:\Users\StudentDev\source\repos\RubicProg\RubicProg\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\e_sqlite3.dll
 C:\Users\StudentDev\source\repos\RubicProg\RubicProg\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\e_sqlite3.dll
-C:\Users\StudentDev\source\repos\RubicProg\RubicProg\obj\Debug\netcoreapp3.1\RubicProg.csprojAssemblyReference.cache
 C:\Users\StudentDev\source\repos\RubicProg\RubicProg\obj\Debug\netcoreapp3.1\RubicProg.AssemblyInfoInputs.cache
 C:\Users\StudentDev\source\repos\RubicProg\RubicProg\obj\Debug\netcoreapp3.1\RubicProg.AssemblyInfo.cs
 C:\Users\StudentDev\source\repos\RubicProg\RubicProg\obj\Debug\netcoreapp3.1\RubicProg.csproj.CoreCompileInputs.cache

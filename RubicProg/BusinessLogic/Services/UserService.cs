@@ -119,13 +119,7 @@ namespace RubicProg.BusinessLogic.Services
             return workoutInfo;
         }
 
-        // всё найс 8
-        public async Task<bool> GetThePassword(string email)
-        {
-            bool result = await _context.Users.AnyAsync(y => y.Email == email);
 
-            return result;
-        }
 
         private async Task<WorkoutPlanBlo> ConvertToWorkoutInfoAsync(WorkoutRto workout)
         {

@@ -12,7 +12,6 @@ namespace RubicProg.BusinessLogic.Core.Interfaces
         Task<UserUpdateBlo> Update(int id, UserUpdateDobleBlo userUpdateDobleBlo);
         Task<UserProfileBlo> UpdateUserProfile(int userWhoProfileId ,UserProfileUpdateBlo userProfileUpdateBlo);
         Task<WorkoutPlanBlo> UpdateWorkoutPlanBlo(int userWhoProfileId, WorkoutPlanUpdateBlo workoutPlanUpdateBlo);
-        Task<bool> GetThePassword(string email);
         // всё вроде найс, исправить мапперы и добавить обновление пароля по почте
     }
 }

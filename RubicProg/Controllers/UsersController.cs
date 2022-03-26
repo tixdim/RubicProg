@@ -47,7 +47,7 @@ namespace RubicProg.Controllers
             {
                 return BadRequest(e.Message);
             }
-            return Created("", user);
+            return Ok(user);
         }
 
         [HttpGet("{userId}")]

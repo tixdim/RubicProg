@@ -7,6 +7,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using RubicProg.BusinessLogic.AutoMapperProfile;
+using RubicProg.BusinessLogic.Core.Interfaces;
+using RubicProg.BusinessLogic.Services;
 using RubicProg.DataAccess.Context;
 using RubicProg.DataAccess.Core.Interfaces.DBContext;
 
@@ -30,6 +32,8 @@ namespace RubicProg
 
             // services.AddDbContext<IDbContext, DataBaseContext>(o => o.UseSqlite("Data Source=usersdata.db; Foreign Keys=True"));
             services.AddDbContext<DataBaseContext>(o => o.UseSqlite("Data Source=usersdata.db; Foreign Keys=True"));
+
+            services.AddScoped<IUserService, UserService>();
 
             services.AddCors();
         }

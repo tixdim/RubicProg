@@ -120,7 +120,6 @@ namespace RubicProg.BusinessLogic.Services
         }
 
 
-
         private async Task<WorkoutPlanBlo> ConvertToWorkoutInfoAsync(WorkoutRto workout)
         {
             if(workout == null) throw new ArgumentNullException(nameof(workout));

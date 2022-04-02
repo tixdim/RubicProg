@@ -6,17 +6,93 @@
 
   <ItemGroup>
     <Compile Remove="Controllers\Models\**" />
-    <Compile Remove="Migrations\**" />
     <Content Remove="Controllers\Models\**" />
-    <Content Remove="Migrations\**" />
     <EmbeddedResource Remove="Controllers\Models\**" />
-    <EmbeddedResource Remove="Migrations\**" />
     <None Remove="Controllers\Models\**" />
-    <None Remove="Migrations\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="usersdata.db" />
+    <Compile Include="obj\Debug\netcoreapp3.1\.NETCoreApp,Version=v3.1.AssemblyAttributes.cs" />
+    <Compile Include="obj\Debug\netcoreapp3.1\RubicProg.AssemblyInfo.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="bin\Debug\netcoreapp3.1\appsettings.Development.json" />
+    <Content Include="bin\Debug\netcoreapp3.1\appsettings.json" />
+    <Content Include="bin\Debug\netcoreapp3.1\Properties\launchSettings.json" />
+    <Content Include="bin\Debug\netcoreapp3.1\RubicProg.deps.json" />
+    <Content Include="bin\Debug\netcoreapp3.1\RubicProg.runtimeconfig.dev.json" />
+    <Content Include="bin\Debug\netcoreapp3.1\RubicProg.runtimeconfig.json" />
+    <Content Include="obj\Debug\netcoreapp3.1\RubicProg.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Debug\netcoreapp3.1\staticwebassets\RubicProg.StaticWebAssets.xml" />
+    <Content Include="obj\project.assets.json" />
+    <Content Include="obj\RubicProg.csproj.nuget.dgspec.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="bin\Debug\netcoreapp3.1\AutoMapper.dll" />
+    <None Include="bin\Debug\netcoreapp3.1\AutoMapper.Extensions.Microsoft.DependencyInjection.dll" />
+    <None Include="bin\Debug\netcoreapp3.1\Microsoft.Bcl.AsyncInterfaces.dll" />
+    <None Include="bin\Debug\netcoreapp3.1\Microsoft.Bcl.HashCode.dll" />
+    <None Include="bin\Debug\netcoreapp3.1\Microsoft.Data.Sqlite.dll" />
+    <None Include="bin\Debug\netcoreapp3.1\Microsoft.DotNet.PlatformAbstractions.dll" />
+    <None Include="bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Abstractions.dll" />
+    <None Include="bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Design.dll" />
+    <None Include="bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.dll" />
+    <None Include="bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Relational.dll" />
+    <None Include="bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Sqlite.dll" />
+    <None Include="bin\Debug\netcoreapp3.1\Microsoft.Extensions.Caching.Abstractions.dll" />
+    <None Include="bin\Debug\netcoreapp3.1\Microsoft.Extensions.Caching.Memory.dll" />
+    <None Include="bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Abstractions.dll" />
+    <None Include="bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Binder.dll" />
+    <None Include="bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.dll" />
+    <None Include="bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.Abstractions.dll" />
+    <None Include="bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.dll" />
+    <None Include="bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyModel.dll" />
+    <None Include="bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.Abstractions.dll" />
+    <None Include="bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.dll" />
+    <None Include="bin\Debug\netcoreapp3.1\Microsoft.Extensions.Options.dll" />
+    <None Include="bin\Debug\netcoreapp3.1\Microsoft.Extensions.Primitives.dll" />
+    <None Include="bin\Debug\netcoreapp3.1\RubicProg.dll" />
+    <None Include="bin\Debug\netcoreapp3.1\RubicProg.exe" />
+    <None Include="bin\Debug\netcoreapp3.1\RubicProg.pdb" />
+    <None Include="bin\Debug\netcoreapp3.1\runtimes\alpine-x64\native\libe_sqlite3.so" />
+    <None Include="bin\Debug\netcoreapp3.1\runtimes\linux-arm64\native\libe_sqlite3.so" />
+    <None Include="bin\Debug\netcoreapp3.1\runtimes\linux-armel\native\libe_sqlite3.so" />
+    <None Include="bin\Debug\netcoreapp3.1\runtimes\linux-arm\native\libe_sqlite3.so" />
+    <None Include="bin\Debug\netcoreapp3.1\runtimes\linux-mips64\native\libe_sqlite3.so" />
+    <None Include="bin\Debug\netcoreapp3.1\runtimes\linux-musl-x64\native\libe_sqlite3.so" />
+    <None Include="bin\Debug\netcoreapp3.1\runtimes\linux-x64\native\libe_sqlite3.so" />
+    <None Include="bin\Debug\netcoreapp3.1\runtimes\linux-x86\native\libe_sqlite3.so" />
+    <None Include="bin\Debug\netcoreapp3.1\runtimes\osx-x64\native\libe_sqlite3.dylib" />
+    <None Include="bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\e_sqlite3.dll" />
+    <None Include="bin\Debug\netcoreapp3.1\runtimes\win-arm\native\e_sqlite3.dll" />
+    <None Include="bin\Debug\netcoreapp3.1\runtimes\win-x64\native\e_sqlite3.dll" />
+    <None Include="bin\Debug\netcoreapp3.1\runtimes\win-x86\native\e_sqlite3.dll" />
+    <None Include="bin\Debug\netcoreapp3.1\SQLitePCLRaw.batteries_v2.dll" />
+    <None Include="bin\Debug\netcoreapp3.1\SQLitePCLRaw.core.dll" />
+    <None Include="bin\Debug\netcoreapp3.1\SQLitePCLRaw.nativelibrary.dll" />
+    <None Include="bin\Debug\netcoreapp3.1\SQLitePCLRaw.provider.dynamic_cdecl.dll" />
+    <None Include="bin\Debug\netcoreapp3.1\System.Collections.Immutable.dll" />
+    <None Include="bin\Debug\netcoreapp3.1\System.Diagnostics.DiagnosticSource.dll" />
+    <None Include="bin\Debug\netcoreapp3.1\System.Text.Json.dll" />
+    <None Include="obj\Debug\netcoreapp3.1\apphost.exe" />
+    <None Include="obj\Debug\netcoreapp3.1\RubicProg.AssemblyInfoInputs.cache" />
+    <None Include="obj\Debug\netcoreapp3.1\RubicProg.assets.cache" />
+    <None Include="obj\Debug\netcoreapp3.1\RubicProg.csproj.CopyComplete" />
+    <None Include="obj\Debug\netcoreapp3.1\RubicProg.csproj.CoreCompileInputs.cache" />
+    <None Include="obj\Debug\netcoreapp3.1\RubicProg.csprojAssemblyReference.cache" />
+    <None Include="obj\Debug\netcoreapp3.1\RubicProg.dll" />
+    <None Include="obj\Debug\netcoreapp3.1\RubicProg.exe" />
+    <None Include="obj\Debug\netcoreapp3.1\RubicProg.genruntimeconfig.cache" />
+    <None Include="obj\Debug\netcoreapp3.1\RubicProg.MvcApplicationPartsAssemblyInfo.cache" />
+    <None Include="obj\Debug\netcoreapp3.1\RubicProg.pdb" />
+    <None Include="obj\Debug\netcoreapp3.1\RubicProg.RazorTargetAssemblyInfo.cache" />
+    <None Include="obj\Debug\netcoreapp3.1\staticwebassets\RubicProg.StaticWebAssets.Manifest.cache" />
+    <None Include="obj\project.nuget.cache" />
+    <None Include="obj\RubicProg.csproj.EntityFrameworkCore.targets" />
+    <None Include="obj\RubicProg.csproj.nuget.g.props" />
+    <None Include="obj\RubicProg.csproj.nuget.g.targets" />
   </ItemGroup>
 
   <ItemGroup>
@@ -33,6 +109,27 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="bin\Debug\netcoreapp3.1\cs\" />
+    <Folder Include="bin\Debug\netcoreapp3.1\de\" />
+    <Folder Include="bin\Debug\netcoreapp3.1\es\" />
+    <Folder Include="bin\Debug\netcoreapp3.1\fr\" />
+    <Folder Include="bin\Debug\netcoreapp3.1\it\" />
+    <Folder Include="bin\Debug\netcoreapp3.1\ja\" />
+    <Folder Include="bin\Debug\netcoreapp3.1\ko\" />
+    <Folder Include="bin\Debug\netcoreapp3.1\pl\" />
+    <Folder Include="bin\Debug\netcoreapp3.1\pt-BR\" />
+    <Folder Include="bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.0\" />
+    <Folder Include="bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\" />
+    <Folder Include="bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\" />
+    <Folder Include="bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\" />
+    <Folder Include="bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\" />
+    <Folder Include="bin\Debug\netcoreapp3.1\ru\" />
+    <Folder Include="bin\Debug\netcoreapp3.1\tr\" />
+    <Folder Include="bin\Debug\netcoreapp3.1\zh-Hans\" />
+    <Folder Include="bin\Debug\netcoreapp3.1\zh-Hant\" />
   </ItemGroup>
 
 

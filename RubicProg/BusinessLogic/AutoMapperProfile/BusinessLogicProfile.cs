@@ -16,6 +16,12 @@ namespace RubicProg.BusinessLogic.AutoMapperProfile
                 .ForMember(x => x.Id, x => x.MapFrom(m => m.Id))
                 .ForMember(x => x.WorkoutTime, x => x.MapFrom(m => m.WorkoutTime))
                 .ForMember(x => x.Exercise, x => x.MapFrom(m => m.Exercise));
+            CreateMap<WorkoutRto, WorkoutPlanAddBlo>()
+                .ForMember(x => x.Id, x => x.MapFrom(m => m.Id))
+                .ForMember(x => x.Exercise, x => x.MapFrom(m => m.Exercise))
+                .ForMember(x => x.WorkoutTime, x => x.MapFrom(m => m.WorkoutTime))
+                .ForMember(x => x.IsDone, x => x.MapFrom(m => m.IsDone))
+                .ForMember(x => x.StartWorkoutDate, x => x.MapFrom(m => m.StartWorkoutDate));
             CreateMap<UserRto, UserUpdateBlo>()
                 .ForMember(x => x.Id, x => x.MapFrom(m => m.Id))
                 .ForMember(x => x.Email, x => x.MapFrom(m => m.Email))

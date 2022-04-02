@@ -22,16 +22,17 @@ namespace RubicProg.BusinessLogic.Services
         }
 
         // всё найс 1
-        public async Task<UserUpdateBlo> RegistrationWithEmail(string email, string password)
+        public async Task<UserUpdateBlo> RegistrationWithEmail(string email, string password, string nickname)
         {
-            bool result = await _context.Users.AnyAsync(y => y.Email == email && y.Password == password);
+            bool result = await _context.Users.AnyAsync(y => y.Email == email && y.Password == password && y.NickName == nickname);
             
             if (result == true) throw new BadRequestException("Такой пользователь уже есть");
             
             UserRto user = new UserRto()
             {
                 Password = password,
-                Email = email
+                Email = email,
+                NickName = nickname
             };
             
             _context.Users.Add(user);
@@ -117,6 +118,41 @@ namespace RubicProg.BusinessLogic.Services
             WorkoutPlanBlo workoutInfo = await ConvertToWorkoutInfoAsync(workout);
             
             return workoutInfo;
+        }
+
+        // в работе
+        public async Task<WorkoutPlanBlo> GetWorkoutPlanBlo()
+        {
+
+        }
+
+        // в работе
+        public async Task<WorkoutPlanBlo> AddWorkoutPlanBlo(WorkoutPlanAddBlo workoutPlanAddBlo)
+        {
+            bool result = await _context.Workouts.AnyAsync(y => y.Id == workoutPlanAddBlo.Id);
+
+            if (result == true) throw new BadRequestException("Такая тренировка уже есть");
+
+            WorkoutRto workout = new WorkoutRto()
+            {
+                WorkoutTime = workoutPlanAddBlo.WorkoutTime,
+                Exercise = workoutPlanAddBlo.Exercise,
+                IsDone = workoutPlanAddBlo.IsDone,
+                StartWorkoutDate = workoutPlanAddBlo.StartWorkoutDate
+            };
+
+            _context.Workouts.Add(workout);
+            await _context.SaveChangesAsync();
+
+            WorkoutPlanBlo workoutPlanBlo = await ConvertToWorkoutInfoAsync(workout);
+
+            return workoutPlanBlo;
+        }
+
+        // в работе
+        public async Task<WorkoutPlanBlo> DeleteWorkoutPlanBlo()
+        {
+
         }
 
 

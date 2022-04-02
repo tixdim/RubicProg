@@ -30,7 +30,7 @@ namespace RubicProg
 
             services.AddAutoMapper(typeof(BusinessLogicProfile));
 
-            // services.AddDbContext<IDbContext, DataBaseContext>(o => o.UseSqlite("Data Source=usersdata.db; Foreign Keys=True"));
+            services.AddDbContext<IDbContext, DataBaseContext>(o => o.UseSqlite("Data Source=usersdata.db; Foreign Keys=True"));
             services.AddDbContext<DataBaseContext>(o => o.UseSqlite("Data Source=usersdata.db; Foreign Keys=True"));
 
             services.AddScoped<IUserService, UserService>();

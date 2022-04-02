@@ -16,21 +16,24 @@ namespace RubicProg.Controllers
             _userService = userService;
         }
         
+        // проверено, всё робит
         [HttpPost("register")]
         public async Task<ActionResult<UserUpdateBlo>> RegistrationWithEmail(UserUpdateBlo userUpdateBlo)
         {
             UserUpdateBlo user;
             try
             {
-                user = await _userService.RegistrationWithEmail(userUpdateBlo.Email, userUpdateBlo.Password);
+                user = await _userService.RegistrationWithEmail(userUpdateBlo.Email, userUpdateBlo.Password, userUpdateBlo.NickName);
             }
-            catch(BadRequestException e)
+            catch (BadRequestException e)
             {
                 return BadRequest(e.Message);
             }
+ 
             return Created("", user);
         }
 
+        // проверено, всё робит
         [HttpPost("authorization")]
         public async Task<ActionResult<UserUpdateBlo>> AuthWithEmail(UserUpdateBlo userUpdateBlo)
         {
@@ -39,6 +42,10 @@ namespace RubicProg.Controllers
             {
                 user = await _userService.AuthWithEmail(userUpdateBlo.Email, userUpdateBlo.Password);
             }
+            catch (NotFoundException e)
+            {
+                return NotFound(e.Message);
+            }
             catch (BadRequestException e)
             {
                 return BadRequest(e.Message);
@@ -46,6 +53,7 @@ namespace RubicProg.Controllers
             return Ok(user);
         }
 
+        // проверено, всё робит
         [HttpGet("{userId}")]
         public async Task<ActionResult<UserIdGetBlo>> Get(int userId)
         {
@@ -61,12 +69,14 @@ namespace RubicProg.Controllers
             return Ok(user);
         }
 
+        // Проверено, всё робит
         [HttpGet("[action]/{id}")]
         public async Task<ActionResult<bool>> DoesExist(int id)
         {
             return await _userService.DoesExist(id);
         }
 
+        // Проверено, всё робит
         [HttpPatch("[action]/{id}")]
         public async Task<ActionResult<UserUpdateBlo>> Update([FromRoute] int id, [FromBody] UserUpdateDobleBlo userUpdateDobleBlo )
         {
@@ -86,6 +96,8 @@ namespace RubicProg.Controllers
             return user;
 
         }
+
+        // Нельзя проверить, так как мы нигде не добавляем юзер профиль
         [HttpPatch("[action]/{userWhoProfileId}")]
         public async Task<ActionResult<UserProfileBlo>> UpdateUserProfile([FromRoute] int userWhoProfileId, [FromBody] UserProfileUpdateBlo userProfileUpdateBlo)
         {
@@ -105,6 +117,7 @@ namespace RubicProg.Controllers
             return user;
         }
 
+        // Нельзя проверить, так как мы нигде не добавляем воркаут профиль
         [HttpPatch("[action]/{userWhoProfileId}")]
         public async Task<ActionResult<WorkoutPlanBlo>> UpdateWorkoutPlanBlo([FromRoute] int userWhoProfileId, [FromBody] WorkoutPlanUpdateBlo workoutPlanUpdateBlo)
         {

@@ -46,14 +46,14 @@ namespace RubicProg
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseCors(p => p.AllowAnyMethod().AllowAnyHeader());
-
             app.UseRouting();
 
             app.UseForwardedHeaders(new ForwardedHeadersOptions
             {
                 ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
             });
+
+            app.UseCors(p => p.AllowAnyMethod().AllowAnyHeader());
 
             app.UseAuthorization();
 

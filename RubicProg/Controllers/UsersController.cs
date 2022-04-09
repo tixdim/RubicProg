@@ -124,7 +124,7 @@ namespace RubicProg.Controllers
             WorkoutPlanBlo user;
             try
             {
-                user = await _userService.UpdateWorkoutPlanBlo(userWhoProfileId, workoutPlanUpdateBlo);
+                user = await _userService.UpdateWorkoutPlan(userWhoProfileId, workoutPlanUpdateBlo);
             }
             catch (NotFoundException e)
             {
@@ -137,5 +137,7 @@ namespace RubicProg.Controllers
             return user;
 
         }
+
+
     }
 }

@@ -2,13 +2,14 @@
 
 namespace RubicProg.BusinessLogic.Core.Models
 {
-    public class UserProfileBlo
+    public class UserProfileDoubleBlo
     {
         public int Id { get; set; }
         public bool IsBoy { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
         public DateTime Birthday { get; set; }
+        public DateTime DateRegistration { get; set; }
         public string AvatarUrl { get; set; }
     }
 }

@@ -7,6 +7,8 @@ using RubicProg.DataAccess.Core.Interfaces.DBContext;
 using RubicProg.DataAccess.Core.Models;
 using Microsoft.EntityFrameworkCore;
 using Share.Exceptions;
+using System.Linq;
+using Z.EntityFramework.Extensions.EFCore;
 
 namespace RubicProg.BusinessLogic.Services
 {
@@ -105,8 +107,60 @@ namespace RubicProg.BusinessLogic.Services
             return userProfileBloInfo;
         }
 
+        // сделать контроллер
+        public async Task<UserProfileBlo> GetUserProfile(int userWhoProfileId)
+        {
+            ProfileUserRto userProfile = await _context.ProfileUsers.FirstOrDefaultAsync(x => x.Id == userWhoProfileId);
+
+            if (userProfile == null) throw new NotFoundException("Профиль не найден");
+
+            return await ConvertToProfileInfo(userProfile);
+        }
+
+        // сделать контроллер
+        public async Task<UserProfileDoubleBlo> AddUserProfile(UserProfileAddBlo userProfileAddBlo)
+        {
+            bool result = await _context.ProfileUsers.AnyAsync(y => y.Id == userProfileAddBlo.Id);
+            if (result == true) throw new BadRequestException("Такая тренировка уже есть");
+
+            ProfileUserRto profileUser = new ProfileUserRto()
+            {
+                IsBoy = userProfileAddBlo.IsBoy,
+                Name = userProfileAddBlo.Name,
+                Surname = userProfileAddBlo.Surname,
+                DateRegistration = DateTime.UtcNow,
+                Birthday = userProfileAddBlo.Birthday,
+                AvatarUrl = userProfileAddBlo.AvatarUrl
+            };
+
+            _context.ProfileUsers.Add(profileUser);
+            await _context.SaveChangesAsync();
+
+            UserProfileDoubleBlo userProfileBloInfo = await ConvertToProfileFullInfo(profileUser);
+
+            return userProfileBloInfo;
+        }
+
+        // сделать контроллер
+        public async Task<bool> DeleteUserProfile(int userWhoProfileId)
+        {
+            bool result = await _context.ProfileUsers.AnyAsync(y => y.Id == userWhoProfileId);
+            if (result == false) throw new NotFoundException("Такой тренировки нет");
+
+            var workPlanWhoIsDelete = await _context.ProfileUsers
+                .FindAsync(userWhoProfileId);
+
+            if (workPlanWhoIsDelete != null)
+            {
+                _context.ProfileUsers.Remove(workPlanWhoIsDelete);
+                await _context.SaveChangesAsync();
+                return true;
+            }
+            return false;
+        }
+
         // всё найс 7 
-        public async Task<WorkoutPlanBlo> UpdateWorkoutPlanBlo(int userWhoProfileId, WorkoutPlanUpdateBlo workoutPlanUpdateBlo)
+        public async Task<WorkoutPlanBlo> UpdateWorkoutPlan(int userWhoProfileId, WorkoutPlanUpdateBlo workoutPlanUpdateBlo)
         {
             WorkoutRto workout = await _context.Workouts.FirstOrDefaultAsync(y => y.UserWhoTrainingId == userWhoProfileId);
             
@@ -120,14 +174,18 @@ namespace RubicProg.BusinessLogic.Services
             return workoutInfo;
         }
 
-        // в работе
-        public async Task<WorkoutPlanBlo> GetWorkoutPlanBlo()
+        // сделать контроллер
+        public async Task<WorkoutPlanBlo> GetWorkoutPlan(int workoutPLanId)
         {
+            WorkoutRto workoutPLan = await _context.Workouts.FirstOrDefaultAsync(x => x.Id == workoutPLanId);
 
+            if (workoutPLan == null) throw new NotFoundException("Тренировка не найдена");
+
+            return await ConvertToWorkoutInfoAsync(workoutPLan);
         }
 
-        // в работе
-        public async Task<WorkoutPlanBlo> AddWorkoutPlanBlo(WorkoutPlanAddBlo workoutPlanAddBlo)
+        // сделать контроллер
+        public async Task<WorkoutPlanBlo> AddWorkoutPlan(WorkoutPlanAddBlo workoutPlanAddBlo)
         {
             bool result = await _context.Workouts.AnyAsync(y => y.Id == workoutPlanAddBlo.Id);
 
@@ -149,12 +207,23 @@ namespace RubicProg.BusinessLogic.Services
             return workoutPlanBlo;
         }
 
-        // в работе
-        public async Task<WorkoutPlanBlo> DeleteWorkoutPlanBlo()
+        // сделать контроллер
+        public async Task<bool> DeleteWorkoutPlan(int workoutPlanId)
         {
+            bool result = await _context.Workouts.AnyAsync(y => y.Id == workoutPlanId);
+            if (result == false) throw new NotFoundException("Такой тренировки нет");
 
+            var workPlanWhoIsDelete = await _context.Workouts
+                .FindAsync(workoutPlanId);
+
+            if (workPlanWhoIsDelete != null)
+            {
+                _context.Workouts.Remove(workPlanWhoIsDelete);
+                await _context.SaveChangesAsync();
+                return true;
+            }
+            return false;
         }
-
 
         private async Task<WorkoutPlanBlo> ConvertToWorkoutInfoAsync(WorkoutRto workout)
         {
@@ -190,6 +259,15 @@ namespace RubicProg.BusinessLogic.Services
             UserProfileBlo userProfileInfoBlo = _mapper.Map<UserProfileBlo>(profileUser);
 
             return userProfileInfoBlo;
+        }
+
+        private async Task<UserProfileDoubleBlo> ConvertToProfileFullInfo(ProfileUserRto profileUser)
+        {
+            if (profileUser == null) throw new ArgumentNullException(nameof(profileUser));
+
+            UserProfileDoubleBlo userProfileInfoFullBlo = _mapper.Map<UserProfileDoubleBlo>(profileUser);
+
+            return userProfileInfoFullBlo;
         }
     }
 }

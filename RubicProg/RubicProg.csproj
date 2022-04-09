@@ -109,6 +109,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Z.EntityFramework.Extensions.EFCore" Version="3.13.16" />
   </ItemGroup>
 
   <ItemGroup>

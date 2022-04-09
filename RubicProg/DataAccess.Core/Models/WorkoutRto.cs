@@ -12,6 +12,6 @@ namespace RubicProg.DataAccess.Core.Models
         public int WorkoutTime { get; set; }
         public string Exercise { get; set; }
         public bool IsDone { get; set; }
-        public DateTimeOffset StartWorkoutDate { get; set; }
+        public DateTime StartWorkoutDate { get; set; }
     }
 }

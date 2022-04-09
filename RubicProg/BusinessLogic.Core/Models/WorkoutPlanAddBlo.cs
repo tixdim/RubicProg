@@ -8,6 +8,6 @@ namespace RubicProg.BusinessLogic.Core.Models
         public string Exercise { get; set; }
         public int WorkoutTime { get; set; }
         public bool IsDone { get; set; }
-        public DateTimeOffset StartWorkoutDate { get; set; }
+        public DateTime StartWorkoutDate { get; set; }
     }
 }

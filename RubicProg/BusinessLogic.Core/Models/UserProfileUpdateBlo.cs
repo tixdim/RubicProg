@@ -8,7 +8,7 @@ namespace RubicProg.BusinessLogic.Core.Models
         public bool IsBoy { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
-        public DateTimeOffset Birthday { get; set; }
+        public DateTime Birthday { get; set; }
         public string AvatarUrl { get; set; }
     }
 }

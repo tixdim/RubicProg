@@ -10,14 +10,14 @@ namespace RubicProg.BusinessLogic.Core.Interfaces
         Task<UserIdGetBlo> Get(int userId);
         Task<UserUpdateBlo> Update(int id, UserUpdateDobleBlo userUpdateDobleBlo);
         Task<bool> DoesExist(int id);
-        Task<UserProfileBlo> UpdateUserProfile(int userWhoProfileId ,UserProfileUpdateBlo userProfileUpdateBlo);
-        Task<UserProfileBlo> GetUserProfile(int userWhoProfileId);
-        Task<UserProfileBlo> AddUserProfile(UserProfileDoubleBlo userProfileAddBlo);
-        Task<bool> DeleteUserProfile(int userWhoProfileId);
+        Task<UserProfileBlo> UpdateUserProfile(int userWhoProfileId, UserProfileUpdateBlo userProfileUpdateBlo);
+        Task<UserProfileBlo> GetUserProfile(int userWhoProfileId); // контр
+        Task<UserProfileBlo> AddUserProfile(UserProfileDoubleBlo userProfileAddBlo); // контр
+        Task<bool> DeleteUserProfile(int userWhoProfileId); // контр
         Task<WorkoutPlanBlo> UpdateWorkoutPlan(int userWhoProfileId, WorkoutPlanUpdateBlo workoutPlanUpdateBlo);
-        Task<WorkoutPlanBlo> GetWorkoutPlan(int workoutPlanId);
-        Task<WorkoutPlanBlo> AddWorkoutPlan(WorkoutPlanAddBlo workoutPlanAddBlo);
-        Task<bool> DeleteWorkoutPlanBlo(int workoutPlanId);
+        Task<WorkoutPlanBlo> GetWorkoutPlan(int workoutPlanId); // контр
+        Task<WorkoutPlanBlo> AddWorkoutPlan(WorkoutPlanAddBlo workoutPlanAddBlo); // контр
+        Task<bool> DeleteWorkoutPlanBlo(int workoutPlanId); // контр
         // всё вроде найс, добавить обновление пароля по почте
     }
 }

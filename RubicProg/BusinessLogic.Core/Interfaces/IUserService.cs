@@ -12,12 +12,12 @@ namespace RubicProg.BusinessLogic.Core.Interfaces
         Task<bool> DoesExist(int id);
         Task<UserProfileBlo> UpdateUserProfile(int userWhoProfileId, UserProfileUpdateBlo userProfileUpdateBlo);
         Task<UserProfileBlo> GetUserProfile(int userWhoProfileId); // контр
-        Task<UserProfileBlo> AddUserProfile(UserProfileDoubleBlo userProfileAddBlo); // контр
+        Task<UserProfileDoubleBlo> AddUserProfile(UserProfileDoubleBlo userProfileAddBlo); // гавно, переделать
         Task<bool> DeleteUserProfile(int userWhoProfileId); // контр
         Task<WorkoutPlanBlo> UpdateWorkoutPlan(int userWhoProfileId, WorkoutPlanUpdateBlo workoutPlanUpdateBlo);
         Task<WorkoutPlanBlo> GetWorkoutPlan(int workoutPlanId); // контр
-        Task<WorkoutPlanBlo> AddWorkoutPlan(WorkoutPlanAddBlo workoutPlanAddBlo); // контр
-        Task<bool> DeleteWorkoutPlanBlo(int workoutPlanId); // контр
+        Task<WorkoutPlanBlo> AddWorkoutPlan(WorkoutPlanAddBlo workoutPlanAddBlo); // гавно, переделать
+        Task<bool> DeleteWorkoutPlan(int workoutPlanId); // контр
         // всё вроде найс, добавить обновление пароля по почте
     }
 }

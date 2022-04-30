@@ -1,8 +1,6 @@
-﻿using System;
-
-namespace RubicProg.BusinessLogic.Core.Models
+﻿namespace RubicProg.API.Models
 {
-    public class UserUpdateBlo
+    public class UserUpdateDto
     {
         public string Nickname { get; set; }
         public string Password { get; set; }

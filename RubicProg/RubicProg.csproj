@@ -5,10 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Controllers\Models\**" />
-    <Content Remove="Controllers\Models\**" />
-    <EmbeddedResource Remove="Controllers\Models\**" />
-    <None Remove="Controllers\Models\**" />
+    <Compile Remove="API\Controllers\Models\**" />
+    <Content Remove="API\Controllers\Models\**" />
+    <EmbeddedResource Remove="API\Controllers\Models\**" />
+    <None Remove="API\Controllers\Models\**" />
   </ItemGroup>
 
   <ItemGroup>

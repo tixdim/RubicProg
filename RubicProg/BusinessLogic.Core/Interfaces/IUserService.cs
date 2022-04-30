@@ -1,23 +1,23 @@
 ﻿using RubicProg.BusinessLogic.Core.Models;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace RubicProg.BusinessLogic.Core.Interfaces
 {
     public interface IUserService
     {
-        Task<UserUpdateBlo> RegistrationWithEmail(string email, string password, string nickname);
-        Task<UserUpdateBlo> AuthWithEmail(string email, string password);
-        Task<UserIdGetBlo> Get(int userId);
-        Task<UserUpdateBlo> Update(int id, UserUpdateDobleBlo userUpdateDobleBlo);
-        Task<bool> DoesExist(int id);
-        Task<UserProfileBlo> UpdateUserProfile(int userWhoProfileId, UserProfileUpdateBlo userProfileUpdateBlo);
-        Task<UserProfileBlo> GetUserProfile(int userWhoProfileId); // контр
-        Task<UserProfileDoubleBlo> AddUserProfile(UserProfileDoubleBlo userProfileAddBlo); // гавно, переделать
-        Task<bool> DeleteUserProfile(int userWhoProfileId); // контр
-        Task<WorkoutPlanBlo> UpdateWorkoutPlan(int userWhoProfileId, WorkoutPlanUpdateBlo workoutPlanUpdateBlo);
-        Task<WorkoutPlanBlo> GetWorkoutPlan(int workoutPlanId); // контр
-        Task<WorkoutPlanBlo> AddWorkoutPlan(WorkoutPlanAddBlo workoutPlanAddBlo); // гавно, переделать
-        Task<bool> DeleteWorkoutPlan(int workoutPlanId); // контр
-        // всё вроде найс, добавить обновление пароля по почте
+        Task<UserInformationBlo> RegistrationUser(UserRegistrBlo userRegistrBlo);
+        Task<UserInformationBlo> AuthenticationUser(UserIdentityBlo userIdentityBlo);
+        Task<UserInformationBlo> GetUser(int userId);
+        Task<UserInformationBlo> UpdateUser(int userId, UserUpdateBlo userUpdateBlo);
+        Task<bool> DoesExistUser(int userId);
+        Task<bool> DeleteUser(int userId);
+
+        Task<WorkoutInformationBlo> AddWorkoutPlan(int workoutId, WorkoutPlanAddBlo workoutPlanAddBlo);
+        Task<WorkoutInformationBlo> UpdateWorkoutPlan(int userId, WorkoutPlanUpdateBlo workoutPlanUpdateBlo);
+        Task<WorkoutInformationBlo> GetWorkoutPlan(int workoutPlanId);
+        Task<List<WorkoutInformationBlo>> GetAllWorkoutPlans(int userId, int count, int skipCount);
+        Task<bool> DoesExistWorkout(int workoutPlanId);
+        Task<bool> DeleteWorkoutPlan(int workoutPlanId);
     }
 }

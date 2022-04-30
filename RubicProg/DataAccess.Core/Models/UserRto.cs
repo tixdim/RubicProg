@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace RubicProg.DataAccess.Core.Models
@@ -8,9 +9,15 @@ namespace RubicProg.DataAccess.Core.Models
     {
         public int Id { get; set; }
         public string Email { get; set; }
-        public string NickName { get; set; }
+        public string Nickname { get; set; }
         public string Password { get; set; }
-        public ProfileUserRto ProgileUser { get; set; }
+
+        public bool IsBoy { get; set; }
+        public string Name { get; set; }
+        public string Surname { get; set; }
+        public DateTime DateRegistration { get; set; }
+        public string AvatarUrl { get; set; }
+
         public List<WorkoutRto> Workouts { get; set; }
     }
 }

@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.OpenApi.Models;
 using RubicProg.BusinessLogic.AutoMapperProfile;
 using RubicProg.BusinessLogic.Core.Interfaces;
 using RubicProg.BusinessLogic.Services;
@@ -33,6 +34,11 @@ namespace RubicProg
             services.AddDbContext<IDbContext, DataBaseContext>(o => o.UseSqlite("Data Source=usersdata.db; Foreign Keys=True"));
             services.AddDbContext<DataBaseContext>(o => o.UseSqlite("Data Source=usersdata.db; Foreign Keys=True"));
 
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "RubicProg API", Version = "v1" });
+            });
+
             services.AddScoped<IUserService, UserService>();
 
             services.AddCors();
@@ -45,6 +51,13 @@ namespace RubicProg
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseSwagger();
+
+            app.UseSwaggerUI(c => 
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "RubicProg V1");
+            });
 
             app.UseRouting();
 

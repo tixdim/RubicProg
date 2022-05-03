@@ -27,7 +27,7 @@ namespace RubicProg.BusinessLogic.Services
         {
             bool result = await _context.Users.AnyAsync(y => y.Email == userRegistrBlo.Email);
             
-            if (result == true) throw new BadRequestException("Такой пользователь уже есть");
+            if (result == true) throw new BadRequestException($"Пользователь с почтой {userRegistrBlo.Email} уже зарегистрирован");
             
             UserRto user = new UserRto()
             {
@@ -75,7 +75,21 @@ namespace RubicProg.BusinessLogic.Services
             user.Surname = userUpdateBlo.Surname;
             user.AvatarUrl = userUpdateBlo.AvatarUrl;
 
+            await _context.SaveChangesAsync();
+
             return ConvertToUserInformationBlo(user); ;
+        }
+
+        public async Task<string> UpdateAvatar(int userId, string avatarUrl)
+        {
+            UserRto user = await _context.Users.FirstOrDefaultAsync(y => y.Id == userId);
+            if (user == null) throw new NotFoundException($"Пользователя с {userId} нет");
+
+            user.AvatarUrl = avatarUrl;
+
+            await _context.SaveChangesAsync();
+
+            return avatarUrl;
         }
 
         public async Task<bool> DoesExistUser(int userId)
@@ -103,13 +117,17 @@ namespace RubicProg.BusinessLogic.Services
 
 
 
-        public async Task<WorkoutInformationBlo> AddWorkoutPlan(int workoutId, WorkoutPlanAddBlo workoutPlanAddBlo)
+        public async Task<WorkoutInformationBlo> AddWorkoutPlan(WorkoutPlanAddBlo workoutPlanAddBlo)
         {
-            bool result = await _context.Workouts.AnyAsync(y => y.Id == workoutId);
-            if (result == true) throw new BadRequestException($"Тренировка с {workoutId} уже есть");
+            bool result = await _context.Users.AnyAsync(y => y.Id == workoutPlanAddBlo.UserWhoTrainingId);
+            if (result == false) throw new NotFoundException($"Пользователя с {workoutPlanAddBlo.UserWhoTrainingId} нет");
+
+            if (workoutPlanAddBlo == null)
+                throw new ArgumentNullException(nameof(workoutPlanAddBlo));
 
             WorkoutRto workout = new WorkoutRto()
             {
+                UserWhoTrainingId = workoutPlanAddBlo.UserWhoTrainingId,
                 Exercise = workoutPlanAddBlo.Exercise,
                 WorkoutTime = workoutPlanAddBlo.WorkoutTime,
                 IsDone = true,
@@ -122,17 +140,16 @@ namespace RubicProg.BusinessLogic.Services
             return ConvertToWorkoutInfoBlo(workout);
         }
 
-        public async Task<WorkoutInformationBlo> UpdateWorkoutPlan(int userId, WorkoutPlanUpdateBlo workoutPlanUpdateBlo)
+        public async Task<WorkoutInformationBlo> UpdateWorkoutPlan(int workoutPlanId, WorkoutPlanUpdateBlo workoutPlanUpdateBlo)
         {
-            bool result = await _context.Users.AnyAsync(y => y.Id == userId);
-            if (result == false) throw new NotFoundException($"Пользователя с {userId} нет");
+            WorkoutRto workout = await _context.Workouts.FirstOrDefaultAsync(x => x.Id == workoutPlanId);
+            if (workout == null) throw new NotFoundException($"Тренировки с {workoutPlanId} нет");
 
-            WorkoutRto workout = await _context.Workouts.FirstOrDefaultAsync(y => y.UserWhoTrainingId == userId);
-            if (workout == null) throw new NotFoundException($"У пользователя с {userId} нет тренировок");
-            
             workout.Exercise = workoutPlanUpdateBlo.Exercise;
             workout.WorkoutTime = workoutPlanUpdateBlo.WorkoutTime;
-            
+
+            await _context.SaveChangesAsync();
+
             return ConvertToWorkoutInfoBlo(workout);
         }
 
@@ -190,25 +207,25 @@ namespace RubicProg.BusinessLogic.Services
 
 
 
-        private List<WorkoutInformationBlo> ConvertToWorkoutInfoBloList(List<WorkoutRto> workouts)
+        private List<WorkoutInformationBlo> ConvertToWorkoutInfoBloList(List<WorkoutRto> workoutRtos)
         {
-            if (workouts == null)
-                throw new ArgumentNullException(nameof(workouts));
+            if (workoutRtos == null)
+                throw new ArgumentNullException(nameof(workoutRtos));
 
             List<WorkoutInformationBlo> workoutInformationBlos = new List<WorkoutInformationBlo>();
-            for (int i = 0; i < workouts.Count; i++)
+            for (int i = 0; i < workoutRtos.Count; i++)
             {
-                workoutInformationBlos.Add(_mapper.Map<WorkoutInformationBlo>(workouts[i]));
+                workoutInformationBlos.Add(_mapper.Map<WorkoutInformationBlo>(workoutRtos[i]));
             }
 
             return workoutInformationBlos;
         }
 
-        private WorkoutInformationBlo ConvertToWorkoutInfoBlo(WorkoutRto workout)
+        private WorkoutInformationBlo ConvertToWorkoutInfoBlo(WorkoutRto workoutRto)
         {
-            if(workout == null) throw new ArgumentNullException(nameof(workout));
+            if(workoutRto == null) throw new ArgumentNullException(nameof(workoutRto));
 
-            WorkoutInformationBlo workoutPlanBlo = _mapper.Map<WorkoutInformationBlo>(workout);
+            WorkoutInformationBlo workoutPlanBlo = _mapper.Map<WorkoutInformationBlo>(workoutRto);
 
             return workoutPlanBlo;
         }

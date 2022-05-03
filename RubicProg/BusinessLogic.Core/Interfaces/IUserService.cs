@@ -10,11 +10,12 @@ namespace RubicProg.BusinessLogic.Core.Interfaces
         Task<UserInformationBlo> AuthenticationUser(UserIdentityBlo userIdentityBlo);
         Task<UserInformationBlo> GetUser(int userId);
         Task<UserInformationBlo> UpdateUser(int userId, UserUpdateBlo userUpdateBlo);
+        Task<string> UpdateAvatar(int userId, string avatarUrl);
         Task<bool> DoesExistUser(int userId);
         Task<bool> DeleteUser(int userId);
 
-        Task<WorkoutInformationBlo> AddWorkoutPlan(int workoutId, WorkoutPlanAddBlo workoutPlanAddBlo);
-        Task<WorkoutInformationBlo> UpdateWorkoutPlan(int userId, WorkoutPlanUpdateBlo workoutPlanUpdateBlo);
+        Task<WorkoutInformationBlo> AddWorkoutPlan(WorkoutPlanAddBlo workoutPlanAddBlo);
+        Task<WorkoutInformationBlo> UpdateWorkoutPlan(int workoutPlanId, WorkoutPlanUpdateBlo workoutPlanUpdateBlo);
         Task<WorkoutInformationBlo> GetWorkoutPlan(int workoutPlanId);
         Task<List<WorkoutInformationBlo>> GetAllWorkoutPlans(int userId, int count, int skipCount);
         Task<bool> DoesExistWorkout(int workoutPlanId);

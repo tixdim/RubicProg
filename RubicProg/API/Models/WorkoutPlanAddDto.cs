@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace RubicProg.BusinessLogic.Core.Models
+namespace RubicProg.API.Models
 {
-    public class WorkoutPlanAddBlo
+    public class WorkoutPlanAddDto
     {
         public int UserWhoTrainingId { get; set; }
         public string Exercise { get; set; }

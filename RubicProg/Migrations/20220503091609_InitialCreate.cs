@@ -14,37 +14,17 @@ namespace RubicProg.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Email = table.Column<string>(nullable: true),
-                    NickName = table.Column<string>(nullable: true),
-                    Password = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Users", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "ProfileUsers",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    UserWhoProfileId = table.Column<int>(nullable: false),
+                    Nickname = table.Column<string>(nullable: true),
+                    Password = table.Column<string>(nullable: true),
                     IsBoy = table.Column<bool>(nullable: false),
                     Name = table.Column<string>(nullable: true),
                     Surname = table.Column<string>(nullable: true),
-                    DateRegistration = table.Column<DateTimeOffset>(nullable: false),
-                    Birthday = table.Column<DateTimeOffset>(nullable: false),
+                    DateRegistration = table.Column<DateTime>(nullable: false),
                     AvatarUrl = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ProfileUsers", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_ProfileUsers_Users_UserWhoProfileId",
-                        column: x => x.UserWhoProfileId,
-                        principalTable: "Users",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                    table.PrimaryKey("PK_Users", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -54,10 +34,10 @@ namespace RubicProg.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     UserWhoTrainingId = table.Column<int>(nullable: false),
-                    WorkoutTime = table.Column<int>(nullable: false),
+                    WorkoutTime = table.Column<DateTime>(nullable: false),
                     Exercise = table.Column<string>(nullable: true),
                     IsDone = table.Column<bool>(nullable: false),
-                    StartWorkoutDate = table.Column<DateTimeOffset>(nullable: false)
+                    StartWorkoutDate = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -71,12 +51,6 @@ namespace RubicProg.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_ProfileUsers_UserWhoProfileId",
-                table: "ProfileUsers",
-                column: "UserWhoProfileId",
-                unique: true);
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Workouts_UserWhoTrainingId",
                 table: "Workouts",
                 column: "UserWhoTrainingId");
@@ -84,9 +58,6 @@ namespace RubicProg.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
-                name: "ProfileUsers");
-
             migrationBuilder.DropTable(
                 name: "Workouts");
 

@@ -9,7 +9,7 @@ using RubicProg.DataAccess.Context;
 namespace RubicProg.Migrations
 {
     [DbContext(typeof(DataBaseContext))]
-    [Migration("20220402132954_InitialCreate")]
+    [Migration("20220503091609_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -18,7 +18,7 @@ namespace RubicProg.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.22");
 
-            modelBuilder.Entity("RubicProg.DataAccess.Core.Models.ProfileUserRto", b =>
+            modelBuilder.Entity("RubicProg.DataAccess.Core.Models.UserRto", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -27,10 +27,10 @@ namespace RubicProg.Migrations
                     b.Property<string>("AvatarUrl")
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTimeOffset>("Birthday")
+                    b.Property<DateTime>("DateRegistration")
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTimeOffset>("DateRegistration")
+                    b.Property<string>("Email")
                         .HasColumnType("TEXT");
 
                     b.Property<bool>("IsBoy")
@@ -39,33 +39,13 @@ namespace RubicProg.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Surname")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("UserWhoProfileId")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserWhoProfileId")
-                        .IsUnique();
-
-                    b.ToTable("ProfileUsers");
-                });
-
-            modelBuilder.Entity("RubicProg.DataAccess.Core.Models.UserRto", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("Email")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("NickName")
+                    b.Property<string>("Nickname")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Password")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Surname")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
@@ -85,29 +65,20 @@ namespace RubicProg.Migrations
                     b.Property<bool>("IsDone")
                         .HasColumnType("INTEGER");
 
-                    b.Property<DateTimeOffset>("StartWorkoutDate")
+                    b.Property<DateTime>("StartWorkoutDate")
                         .HasColumnType("TEXT");
 
                     b.Property<int>("UserWhoTrainingId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("WorkoutTime")
-                        .HasColumnType("INTEGER");
+                    b.Property<DateTime>("WorkoutTime")
+                        .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
                     b.HasIndex("UserWhoTrainingId");
 
                     b.ToTable("Workouts");
-                });
-
-            modelBuilder.Entity("RubicProg.DataAccess.Core.Models.ProfileUserRto", b =>
-                {
-                    b.HasOne("RubicProg.DataAccess.Core.Models.UserRto", "UserWhoProfile")
-                        .WithOne("ProgileUser")
-                        .HasForeignKey("RubicProg.DataAccess.Core.Models.ProfileUserRto", "UserWhoProfileId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("RubicProg.DataAccess.Core.Models.WorkoutRto", b =>

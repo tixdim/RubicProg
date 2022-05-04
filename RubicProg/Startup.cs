@@ -12,6 +12,9 @@ using RubicProg.BusinessLogic.Core.Interfaces;
 using RubicProg.BusinessLogic.Services;
 using RubicProg.DataAccess.Context;
 using RubicProg.DataAccess.Core.Interfaces.DBContext;
+using System;
+using System.IO;
+using System.Reflection;
 
 namespace RubicProg
 {
@@ -34,9 +37,14 @@ namespace RubicProg
             services.AddDbContext<IDbContext, DataBaseContext>(o => o.UseSqlite("Data Source=usersdata.db; Foreign Keys=True"));
             services.AddDbContext<DataBaseContext>(o => o.UseSqlite("Data Source=usersdata.db; Foreign Keys=True"));
 
+            services.AddControllers().AddXmlDataContractSerializerFormatters();
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "RubicProg API", Version = "v1" });
+
+                var xmlFilename = Path.Combine(AppContext.BaseDirectory, "RubicProg.xml");
+                c.IncludeXmlComments(xmlFilename);
             });
 
             services.AddScoped<IUserService, UserService>();

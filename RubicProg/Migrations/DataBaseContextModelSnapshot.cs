@@ -29,6 +29,7 @@ namespace RubicProg.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Email")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<bool>("IsBoy")
@@ -38,9 +39,11 @@ namespace RubicProg.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Nickname")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Password")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Surname")

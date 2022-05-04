@@ -193,7 +193,6 @@ D:\Documents\GitHub\RubicProg\RubicProg\obj\Debug\netcoreapp3.1\RubicProg.Assemb
 D:\Documents\GitHub\RubicProg\RubicProg\obj\Debug\netcoreapp3.1\RubicProg.csproj.CoreCompileInputs.cache
 D:\Documents\GitHub\RubicProg\RubicProg\obj\Debug\netcoreapp3.1\RubicProg.MvcApplicationPartsAssemblyInfo.cache
 D:\Documents\GitHub\RubicProg\RubicProg\obj\Debug\netcoreapp3.1\RubicProg.dll
-D:\Documents\GitHub\RubicProg\RubicProg\obj\Debug\netcoreapp3.1\RubicProg.pdb
 D:\Documents\GitHub\RubicProg\RubicProg\bin\Debug\netcoreapp3.1\appsettings.Development.json
 D:\Documents\GitHub\RubicProg\RubicProg\bin\Debug\netcoreapp3.1\appsettings.json
 D:\Documents\GitHub\RubicProg\RubicProg\bin\Debug\netcoreapp3.1\RubicProg.StaticWebAssets.xml
@@ -202,7 +201,6 @@ D:\Documents\GitHub\RubicProg\RubicProg\bin\Debug\netcoreapp3.1\RubicProg.deps.j
 D:\Documents\GitHub\RubicProg\RubicProg\bin\Debug\netcoreapp3.1\RubicProg.runtimeconfig.json
 D:\Documents\GitHub\RubicProg\RubicProg\bin\Debug\netcoreapp3.1\RubicProg.runtimeconfig.dev.json
 D:\Documents\GitHub\RubicProg\RubicProg\bin\Debug\netcoreapp3.1\RubicProg.dll
-D:\Documents\GitHub\RubicProg\RubicProg\bin\Debug\netcoreapp3.1\RubicProg.pdb
 D:\Documents\GitHub\RubicProg\RubicProg\bin\Debug\netcoreapp3.1\AutoMapper.dll
 D:\Documents\GitHub\RubicProg\RubicProg\bin\Debug\netcoreapp3.1\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 D:\Documents\GitHub\RubicProg\RubicProg\bin\Debug\netcoreapp3.1\Microsoft.Bcl.AsyncInterfaces.dll

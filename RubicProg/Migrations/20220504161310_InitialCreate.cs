@@ -13,9 +13,9 @@ namespace RubicProg.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Email = table.Column<string>(nullable: true),
-                    Nickname = table.Column<string>(nullable: true),
-                    Password = table.Column<string>(nullable: true),
+                    Email = table.Column<string>(nullable: false),
+                    Nickname = table.Column<string>(nullable: false),
+                    Password = table.Column<string>(nullable: false),
                     IsBoy = table.Column<bool>(nullable: false),
                     Name = table.Column<string>(nullable: true),
                     Surname = table.Column<string>(nullable: true),

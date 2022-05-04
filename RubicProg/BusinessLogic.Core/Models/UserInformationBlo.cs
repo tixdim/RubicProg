@@ -13,6 +13,6 @@ namespace RubicProg.BusinessLogic.Core.Models
         public string Name { get; set; }
         public string Surname { get; set; }
         public DateTime DateRegistration { get; set; }
-        public string AvatarUrl { get; set; }
+        public string? AvatarUrl { get; set; }
     }
 }

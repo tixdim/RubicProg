@@ -9,7 +9,7 @@ using RubicProg.DataAccess.Context;
 namespace RubicProg.Migrations
 {
     [DbContext(typeof(DataBaseContext))]
-    [Migration("20220504161310_InitialCreate")]
+    [Migration("20220504192817_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -38,6 +38,7 @@ namespace RubicProg.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Nickname")
@@ -49,6 +50,7 @@ namespace RubicProg.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Surname")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");

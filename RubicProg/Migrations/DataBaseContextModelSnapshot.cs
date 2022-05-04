@@ -36,6 +36,7 @@ namespace RubicProg.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Nickname")
@@ -47,6 +48,7 @@ namespace RubicProg.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Surname")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");

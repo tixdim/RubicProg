@@ -13,9 +13,9 @@ namespace RubicProg.DataAccess.Core.Models
         [Required] public string Nickname { get; set; }
         [Required, MinLength(6)] public string Password { get; set; }
 
-        public bool IsBoy { get; set; }
-        public string Name { get; set; }
-        public string Surname { get; set; }
+        [Required] public bool IsBoy { get; set; }
+        [Required] public string Name { get; set; }
+        [Required] public string Surname { get; set; }
         public DateTime DateRegistration { get; set; }
         public string? AvatarUrl { get; set; }
 

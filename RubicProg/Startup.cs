@@ -43,8 +43,10 @@ namespace RubicProg
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "RubicProg API", Version = "v1" });
 
-                var xmlFilename = Path.Combine(AppContext.BaseDirectory, "RubicProg.xml");
-                c.IncludeXmlComments(xmlFilename);
+                // Set the comments path for the Swagger JSON and UI.
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                c.IncludeXmlComments(xmlPath);
             });
 
             services.AddScoped<IUserService, UserService>();

@@ -149,7 +149,7 @@ namespace RubicProg.API.Controllers
         /// <param name="workoutPlanId">Идентификатор тренировки</param>
         [ProducesResponseType(typeof(bool), (int)HttpStatusCode.OK)]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
-        [HttpGet("[action]/{workoutPlanId}")]
+        [HttpDelete("[action]/{workoutPlanId}")]
         public async Task<ActionResult<bool>> DeleteWorkoutPlan(int workoutPlanId)
         {
             try

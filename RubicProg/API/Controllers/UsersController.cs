@@ -166,7 +166,7 @@ namespace RubicProg.API.Controllers
         /// <param name="userId">Идентификатор пользователя</param>
         [ProducesResponseType(typeof(bool), (int)HttpStatusCode.OK)]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
-        [HttpGet("[action]/{userId}")]
+        [HttpDelete("[action]/{userId}")]
         public async Task<ActionResult<bool>> DeleteUser(int userId)
         {
             try

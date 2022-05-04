@@ -17,8 +17,8 @@ namespace RubicProg.Migrations
                     Nickname = table.Column<string>(nullable: false),
                     Password = table.Column<string>(nullable: false),
                     IsBoy = table.Column<bool>(nullable: false),
-                    Name = table.Column<string>(nullable: true),
-                    Surname = table.Column<string>(nullable: true),
+                    Name = table.Column<string>(nullable: false),
+                    Surname = table.Column<string>(nullable: false),
                     DateRegistration = table.Column<DateTime>(nullable: false),
                     AvatarUrl = table.Column<string>(nullable: true)
                 },

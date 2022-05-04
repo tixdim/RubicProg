@@ -258,3 +258,5 @@ D:\Documents\GitHub\RubicProg\RubicProg\bin\Debug\netcoreapp3.1\Swashbuckle.AspN
 D:\Documents\GitHub\RubicProg\RubicProg\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
 D:\Documents\GitHub\RubicProg\RubicProg\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
 D:\Documents\GitHub\RubicProg\RubicProg\obj\Debug\netcoreapp3.1\RubicProg.MvcApplicationPartsAssemblyInfo.cs
+D:\Documents\GitHub\RubicProg\RubicProg\bin\Debug\netcoreapp3.1\RubicProg.xml
+D:\Documents\GitHub\RubicProg\RubicProg\obj\Debug\netcoreapp3.1\RubicProg.xml

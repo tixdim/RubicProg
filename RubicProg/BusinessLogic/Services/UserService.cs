@@ -25,7 +25,12 @@ namespace RubicProg.BusinessLogic.Services
             bool result = await _context.Users.AnyAsync(y => y.Email == userRegistrBlo.Email);
             
             if (result == true) throw new BadRequestException($"Пользователь с почтой {userRegistrBlo.Email} уже зарегистрирован");
-            
+
+            if (userRegistrBlo.Email == null || userRegistrBlo.Nickname == null || userRegistrBlo.Password == null ||
+                userRegistrBlo.Name == null || userRegistrBlo.Surname == null) throw new BadRequestException($"Вы заполнили не все поля");
+
+            if (userRegistrBlo.Password.Length < 6) throw new BadRequestException($"Длина пароля должна быть не менее 6 символов");
+
             UserRto user = new UserRto()
             {
                 Email = userRegistrBlo.Email,
@@ -41,7 +46,7 @@ namespace RubicProg.BusinessLogic.Services
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
 
-            return ConvertToUserInformationBlo(user); ;
+            return ConvertToUserInformationBlo(user);
         }
 
         public async Task<UserInformationBlo> AuthenticationUser(UserIdentityBlo userIdentityBlo)

@@ -1,0 +1,111 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>RubicProg</name>
+    </assembly>
+    <members>
+        <member name="T:RubicProg.API.Controllers.UsersController">
+            <summary>
+            User's controller
+            </summary>
+        </member>
+        <member name="M:RubicProg.API.Controllers.UsersController.RegistrationUser(RubicProg.API.Models.UserRegistrDto)">
+            <summary>
+            Регистрирует пользователя в приложение и возвращает информацию о нём
+            </summary>
+            <param name="email">Почта пользователя</param>
+            <param name="nickname">Ник пользователя</param>
+            <param name="password">Пароль</param>
+            <param name="IsBoy">Пол</param>
+            <param name="Name">Имя пользователя</param>
+            <param name="Surname">Фамилия пользователя</param>
+        </member>
+        <member name="M:RubicProg.API.Controllers.UsersController.AuthenticationUser(RubicProg.API.Models.UserIdentityDto)">
+            <summary>
+            Аутентифицирует пользователя в приложение и возвращает информацию о нём
+            </summary>
+            <param name="email">Почта пользователя</param>
+            <param name="password">Пароль</param>
+        </member>
+        <member name="M:RubicProg.API.Controllers.UsersController.GetUser(System.Int32)">
+            <summary>
+            Возвращает информацию о пользователе приложения
+            </summary>
+            <param name="userId">Идентификатор пользователя</param>
+        </member>
+        <member name="M:RubicProg.API.Controllers.UsersController.UpdateUser(System.Int32,RubicProg.API.Models.UserUpdateDto)">
+            <summary>
+            Обновляет информацию пользователя приложения
+            </summary>
+            <param name="userId">Идентификатор пользователя</param>
+            <param name="userUpdateDto">Объект обновления информации пользователя</param>
+        </member>
+        <member name="M:RubicProg.API.Controllers.UsersController.UpdateAvatar(System.Int32,RubicProg.API.Models.UserUpdateAvatarDto)">
+            <summary>
+            Обновляет только аватарку пользователя приложения
+            </summary>
+            <param name="userId">Идентификатор пользователя</param>
+            <param name="userUpdateAvatarDto">Объект аватарки пользователя</param>
+        </member>
+        <member name="M:RubicProg.API.Controllers.UsersController.DoesExistUser(System.Int32)">
+            <summary>
+            Проверяет, существует ли пользователь с указанным id
+            </summary>
+            <param name="userId">Идентификатор пользователя</param>
+        </member>
+        <member name="M:RubicProg.API.Controllers.UsersController.DeleteUser(System.Int32)">
+            <summary>
+            Возвращает получилось ли удалить юзера с указанным id или нет
+            </summary>
+            <param name="userId">Идентификатор пользователя</param>
+        </member>
+        <member name="T:RubicProg.API.Controllers.WorkoutsController">
+            <summary>
+            Workout's controller
+            </summary>
+        </member>
+        <member name="M:RubicProg.API.Controllers.WorkoutsController.AddWorkoutPlan(RubicProg.API.Models.WorkoutPlanAddDto)">
+            <summary>
+            Добавляет тренировку и возвращает информацию о нём
+            </summary>
+            <param name="userWhoTrainingId">Id пользователя, к которому надо добавить тренировку</param>
+            <param name="exercise">Упражнение</param>
+            <param name="workoutTime">Время всей тренировки</param>
+            <param name="startWorkoutDate">Время начала тренировки</param>
+        </member>
+        <member name="M:RubicProg.API.Controllers.WorkoutsController.UpdateWorkoutPlan(System.Int32,RubicProg.API.Models.WorkoutPlanUpdateDto)">
+            <summary>
+            Обновляет информацию тренировки
+            </summary>
+            <param name="workoutPlanId">Идентификатор тренировки</param>
+            <param name="exercise">Упражнение</param>
+            <param name="workoutTime">Время начала</param>
+        </member>
+        <member name="M:RubicProg.API.Controllers.WorkoutsController.GetWorkoutPlan(System.Int32)">
+            <summary>
+            Возвращает тренировкe с указанным id
+            </summary>
+            <param name="workoutPlanId">Идентификатор тренировки</param>
+        </member>
+        <member name="M:RubicProg.API.Controllers.WorkoutsController.GetAllWorkoutPlans(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Возвращает все тренировки у указанного пользователя по userId
+            </summary>
+            <param name="userId">Идентификатор пользователя</param>
+            <param name="count">Сколько тренировок требуется</param>
+            <param name="skipCount">Сколько тренировок уже есть</param>
+        </member>
+        <member name="M:RubicProg.API.Controllers.WorkoutsController.DoesExistWorkout(System.Int32)">
+            <summary>
+            Проверяет, существует ли тренировка с указанным id
+            </summary>
+            <param name="workoutPlanId">Идентификатор пользователя</param>
+        </member>
+        <member name="M:RubicProg.API.Controllers.WorkoutsController.DeleteWorkoutPlan(System.Int32)">
+            <summary>
+            Возвращает получилось ли удалить тренировку с указанным id или нет
+            </summary>
+            <param name="workoutPlanId">Идентификатор тренировки</param>
+        </member>
+    </members>
+</doc>

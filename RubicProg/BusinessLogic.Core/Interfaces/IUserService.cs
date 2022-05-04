@@ -9,6 +9,8 @@ namespace RubicProg.BusinessLogic.Core.Interfaces
         Task<UserInformationBlo> AuthenticationUser(UserIdentityBlo userIdentityBlo);
         Task<UserInformationBlo> GetUser(int userId);
         Task<UserInformationBlo> UpdateUser(int userId, UserUpdateBlo userUpdateBlo);
+        Task<UserInformationBlo> UpdatePasswordWithOldUser(int userId, UserUpdateWithOldPasswordBlo userUpdateWithOldPasswordBlo);
+        Task<bool> UpdatePasswordWithNewUser(int userId, UserUpdateWithNewPasswordBlo userUpdateWithNewPasswordBlo);
         Task<string> UpdateAvatar(int userId, string avatarUrl);
         Task<bool> DoesExistUser(int userId);
         Task<bool> DeleteUser(int userId);

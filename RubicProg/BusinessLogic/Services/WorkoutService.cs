@@ -31,6 +31,9 @@ namespace RubicProg.BusinessLogic.Services
             if (workoutPlanAddBlo == null)
                 throw new ArgumentNullException(nameof(workoutPlanAddBlo));
 
+            if (workoutPlanAddBlo.Exercise == null) 
+                throw new BadRequestException($"Вы ввели что-то не так");
+
             WorkoutRto workout = new WorkoutRto()
             {
                 UserWhoTrainingId = workoutPlanAddBlo.UserWhoTrainingId,

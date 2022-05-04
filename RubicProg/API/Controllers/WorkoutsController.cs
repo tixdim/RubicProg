@@ -54,6 +54,10 @@ namespace RubicProg.API.Controllers
             {
                 return BadRequest(e.Message);
             }
+            catch (BadRequestException e)
+            {
+                return BadRequest(e.Message);
+            }
             return Created("", ConvertToWorkoutInformationDto(workoutInformationBlo));
         }
 

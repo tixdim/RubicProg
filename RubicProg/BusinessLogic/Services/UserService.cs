@@ -26,16 +26,18 @@ namespace RubicProg.BusinessLogic.Services
             
             if (result == true) throw new BadRequestException($"Пользователь с почтой {userRegistrBlo.Email} уже зарегистрирован");
 
-            if (userRegistrBlo.Email == null || userRegistrBlo.Nickname == null || userRegistrBlo.Password == null ||
-                userRegistrBlo.Name == null || userRegistrBlo.Surname == null) throw new BadRequestException($"Вы заполнили не все поля");
+            if (userRegistrBlo.Email == null || userRegistrBlo.Nickname == null || userRegistrBlo.FirstPassword == null ||
+                userRegistrBlo.SecondPassword == null || userRegistrBlo.Name == null || userRegistrBlo.Surname == null) throw new BadRequestException($"Вы заполнили не все поля");
 
-            if (userRegistrBlo.Password.Length < 6) throw new BadRequestException($"Длина пароля должна быть не менее 6 символов");
+            if (userRegistrBlo.FirstPassword != userRegistrBlo.SecondPassword) throw new BadRequestException($"Пароли не совпадают");
+
+            if (userRegistrBlo.FirstPassword.Length < 6) throw new BadRequestException($"Длина пароля должна быть не менее 6 символов");
 
             UserRto user = new UserRto()
             {
                 Email = userRegistrBlo.Email,
                 Nickname = userRegistrBlo.Nickname,
-                Password = userRegistrBlo.Password,
+                Password = userRegistrBlo.FirstPassword,
                 IsBoy = userRegistrBlo.IsBoy,
                 Name = userRegistrBlo.Name,
                 Surname = userRegistrBlo.Surname,
@@ -82,7 +84,39 @@ namespace RubicProg.BusinessLogic.Services
 
             await _context.SaveChangesAsync();
 
-            return ConvertToUserInformationBlo(user); ;
+            return ConvertToUserInformationBlo(user);
+        }
+
+        public async Task<UserInformationBlo> UpdatePasswordWithOldUser(int userId, UserUpdateWithOldPasswordBlo userUpdateWithOldPasswordBlo)
+        {
+            bool result = await _context.Users.AnyAsync(y => y.Id == userId);
+            if (result == false) throw new NotFoundException($"Пользователя с id {userId} нет");
+
+            UserRto user = await _context.Users.FirstOrDefaultAsync(y => y.Password == userUpdateWithOldPasswordBlo.OldPassword);
+            if (user == null) throw new BadRequestException($"Неправильно введён старый пароль");
+
+            user.Password = userUpdateWithOldPasswordBlo.NewPassword;
+
+            await _context.SaveChangesAsync();
+
+            return ConvertToUserInformationBlo(user);
+        }
+
+        public async Task<bool> UpdatePasswordWithNewUser(int userId, UserUpdateWithNewPasswordBlo userUpdateWithNewPasswordBlo)
+        {
+            UserRto user = await _context.Users.FirstOrDefaultAsync(y => y.Id == userId);
+            if (user == null) throw new NotFoundException($"Пользователя с id {userId} нет");
+
+            if (userUpdateWithNewPasswordBlo.NewPassword == null)
+                throw new BadRequestException($"Вы ввели некорректный пароль");
+            if (userUpdateWithNewPasswordBlo.NewPassword.Length < 6)
+                throw new BadRequestException($"Длина пароля должна быть не менее 6 символов");
+
+            user.Password = userUpdateWithNewPasswordBlo.NewPassword;
+
+            await _context.SaveChangesAsync();
+
+            return true;
         }
 
         public async Task<string> UpdateAvatar(int userId, string avatarUrl)

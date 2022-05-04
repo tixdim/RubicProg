@@ -5,3 +5,6 @@ dotnet_diagnostic.CS8632.severity = none
 
 # CS1572: Комментарий XML содержит тег param, но параметр с таким именем не существует
 dotnet_diagnostic.CS1572.severity = none
+
+# CS1573: Параметр не имеет соответствующий тег параметра в комментарии XML (в отличие от остальных параметров)
+dotnet_diagnostic.CS1573.severity = none

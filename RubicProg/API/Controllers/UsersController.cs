@@ -31,7 +31,8 @@ namespace RubicProg.API.Controllers
         /// </summary>
         /// <param name="email">Почта пользователя</param>
         /// <param name="nickname">Ник пользователя</param>
-        /// <param name="password">Пароль</param>
+        /// <param name="firstpassword">Первый пароль</param>
+        /// <param name="secondpassword">Второй пароль</param>
         /// <param name="IsBoy">Пол</param>
         /// <param name="Name">Имя пользователя</param>
         /// <param name="Surname">Фамилия пользователя</param>
@@ -127,6 +128,63 @@ namespace RubicProg.API.Controllers
 
             return Ok(ConvertToUserInformationDto(userInformationBlo));
 
+        }
+
+        /// <summary>
+        /// Обновляет пароль у пользователя приложения (когда он уже авторизован)
+        /// </summary>
+        /// <param name="userId">Идентификатор пользователя</param>
+        /// <param name="userUpdateWithOldPasswordDto">Объект обновления информации пользователя</param>
+        [ProducesResponseType(typeof(UserInformationDto), (int)HttpStatusCode.OK)]
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]
+        [ProducesResponseType((int)HttpStatusCode.BadRequest)]
+        [HttpPatch("[action]/{userId}")]
+        public async Task<ActionResult<UserInformationDto>> UpdatePasswordWithOldUser([FromRoute] int userId, [FromBody] UserUpdateWithOldPasswordDto userUpdateWithOldPasswordDto)
+        {
+            UserUpdateWithOldPasswordBlo userUpdateWithOldPasswordBlo = _mapper.Map<UserUpdateWithOldPasswordBlo>(userUpdateWithOldPasswordDto);
+            UserInformationBlo userInformationBlo;
+
+            try
+            {
+                userInformationBlo = await _userService.UpdatePasswordWithOldUser(userId, userUpdateWithOldPasswordBlo);
+            }
+            catch (NotFoundException e)
+            {
+                return NotFound(e.Message);
+            }
+            catch (BadRequestException e)
+            {
+                return BadRequest(e.Message);
+            }
+
+            return Ok(ConvertToUserInformationDto(userInformationBlo));
+        }
+
+        /// <summary>
+        /// Обновляет пароль у пользователя приложения (когда он ещё не авторизован)
+        /// </summary>
+        /// <param name="userId">Идентификатор пользователя</param>
+        /// <param name="userUpdateWithNewPasswordDto">Объект обновления информации пользователя</param>
+        [ProducesResponseType(typeof(bool), (int)HttpStatusCode.OK)]
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]
+        [ProducesResponseType((int)HttpStatusCode.BadRequest)]
+        [HttpPatch("[action]/{userId}")]
+        public async Task<ActionResult<bool>> UpdatePasswordWithNewUser([FromRoute] int userId, [FromBody] UserUpdateWithNewPasswordDto userUpdateWithNewPasswordDto)
+        {
+            UserUpdateWithNewPasswordBlo userUpdateWithNewPasswordBlo = _mapper.Map<UserUpdateWithNewPasswordBlo>(userUpdateWithNewPasswordDto);
+
+            try
+            {
+                return Ok(await _userService.UpdatePasswordWithNewUser(userId, userUpdateWithNewPasswordBlo));
+            }
+            catch (NotFoundException e)
+            {
+                return NotFound(e.Message);
+            }
+            catch (BadRequestException e)
+            {
+                return BadRequest(e.Message);
+            }
         }
 
         /// <summary>

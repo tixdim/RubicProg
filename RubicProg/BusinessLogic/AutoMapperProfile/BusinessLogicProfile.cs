@@ -34,6 +34,10 @@ namespace RubicProg.BusinessLogic.AutoMapperProfile
 
             CreateMap<UserUpdateDto, UserUpdateBlo>();
 
+            CreateMap<UserUpdateWithOldPasswordDto, UserUpdateWithOldPasswordBlo>();
+
+            CreateMap<UserUpdateWithNewPasswordDto, UserUpdateWithNewPasswordBlo>();
+
             CreateMap<UserInformationBlo, UserInformationDto>();
 
             CreateMap<WorkoutPlanAddDto, WorkoutPlanAddBlo>();

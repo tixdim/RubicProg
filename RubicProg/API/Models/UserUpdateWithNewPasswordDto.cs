@@ -2,6 +2,6 @@
 {
     public class UserUpdateWithNewPasswordDto
     {
-        public string NewPassword { get; set; }
+        public string? NewPassword { get; set; }
     }
 }

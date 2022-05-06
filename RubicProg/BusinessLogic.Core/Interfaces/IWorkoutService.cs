@@ -10,7 +10,9 @@ namespace RubicProg.BusinessLogic.Core.Interfaces
         Task<WorkoutInformationBlo> UpdateWorkoutPlan(int workoutPlanId, WorkoutPlanUpdateBlo workoutPlanUpdateBlo);
         Task<WorkoutInformationBlo> GetWorkoutPlan(int workoutPlanId);
         Task<List<WorkoutInformationBlo>> GetAllWorkoutPlans(int userId, int count, int skipCount);
+        Task<int> GetWorkoutCount(int userId);
         Task<bool> DoesExistWorkout(int workoutPlanId);
         Task<bool> DeleteWorkoutPlan(int workoutPlanId);
+        Task<bool> DeleteAllWorkoutPlan(int userId);
     }
 }

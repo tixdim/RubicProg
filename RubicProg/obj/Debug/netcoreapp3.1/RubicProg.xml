@@ -15,7 +15,8 @@
             </summary>
             <param name="email">Почта пользователя</param>
             <param name="nickname">Ник пользователя</param>
-            <param name="password">Пароль</param>
+            <param name="firstpassword">Первый пароль</param>
+            <param name="secondpassword">Второй пароль</param>
             <param name="IsBoy">Пол</param>
             <param name="Name">Имя пользователя</param>
             <param name="Surname">Фамилия пользователя</param>
@@ -39,6 +40,20 @@
             </summary>
             <param name="userId">Идентификатор пользователя</param>
             <param name="userUpdateDto">Объект обновления информации пользователя</param>
+        </member>
+        <member name="M:RubicProg.API.Controllers.UsersController.UpdatePasswordWithOldUser(System.Int32,RubicProg.API.Models.UserUpdateWithOldPasswordDto)">
+            <summary>
+            Обновляет пароль у пользователя приложения (когда он уже авторизован)
+            </summary>
+            <param name="userId">Идентификатор пользователя</param>
+            <param name="userUpdateWithOldPasswordDto">Объект обновления информации пользователя</param>
+        </member>
+        <member name="M:RubicProg.API.Controllers.UsersController.UpdatePasswordWithNewUser(System.Int32,RubicProg.API.Models.UserUpdateWithNewPasswordDto)">
+            <summary>
+            Обновляет пароль у пользователя приложения (когда он ещё не авторизован)
+            </summary>
+            <param name="userId">Идентификатор пользователя</param>
+            <param name="userUpdateWithNewPasswordDto">Объект обновления информации пользователя</param>
         </member>
         <member name="M:RubicProg.API.Controllers.UsersController.UpdateAvatar(System.Int32,RubicProg.API.Models.UserUpdateAvatarDto)">
             <summary>
@@ -66,7 +81,7 @@
         </member>
         <member name="M:RubicProg.API.Controllers.WorkoutsController.AddWorkoutPlan(RubicProg.API.Models.WorkoutPlanAddDto)">
             <summary>
-            Добавляет тренировку и возвращает информацию о нём
+            Добавляет тренировку и возвращает информацию о ней
             </summary>
             <param name="userWhoTrainingId">Id пользователя, к которому надо добавить тренировку</param>
             <param name="exercise">Упражнение</param>
@@ -75,7 +90,7 @@
         </member>
         <member name="M:RubicProg.API.Controllers.WorkoutsController.UpdateWorkoutPlan(System.Int32,RubicProg.API.Models.WorkoutPlanUpdateDto)">
             <summary>
-            Обновляет информацию тренировки
+            Обновляет информацию тренировки и возвращает информацию о ней
             </summary>
             <param name="workoutPlanId">Идентификатор тренировки</param>
             <param name="exercise">Упражнение</param>
@@ -83,7 +98,7 @@
         </member>
         <member name="M:RubicProg.API.Controllers.WorkoutsController.GetWorkoutPlan(System.Int32)">
             <summary>
-            Возвращает тренировкe с указанным id
+            Возвращает тренировку с указанным id
             </summary>
             <param name="workoutPlanId">Идентификатор тренировки</param>
         </member>
@@ -95,17 +110,29 @@
             <param name="count">Сколько тренировок требуется</param>
             <param name="skipCount">Сколько тренировок уже есть</param>
         </member>
+        <member name="M:RubicProg.API.Controllers.WorkoutsController.GetWorkoutCount(System.Int32)">
+            <summary>
+            Возвращает количество тренировок у указанного пользователя c userId
+            </summary>
+            <param name="userId">Идентификатор пользователя</param>
+        </member>
         <member name="M:RubicProg.API.Controllers.WorkoutsController.DoesExistWorkout(System.Int32)">
             <summary>
             Проверяет, существует ли тренировка с указанным id
             </summary>
-            <param name="workoutPlanId">Идентификатор пользователя</param>
+            <param name="workoutPlanId">Идентификатор тренировки</param>
         </member>
         <member name="M:RubicProg.API.Controllers.WorkoutsController.DeleteWorkoutPlan(System.Int32)">
             <summary>
             Возвращает получилось ли удалить тренировку с указанным id или нет
             </summary>
             <param name="workoutPlanId">Идентификатор тренировки</param>
+        </member>
+        <member name="M:RubicProg.API.Controllers.WorkoutsController.DeleteAllWorkoutPlan(System.Int32)">
+            <summary>
+            Возвращает получилось ли удалить все тренировки у пользователя с указанным id или нет
+            </summary>
+            <param name="userId">Идентификатор пользователя</param>
         </member>
     </members>
 </doc>

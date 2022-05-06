@@ -28,7 +28,7 @@ namespace RubicProg.API.Controllers
         }
 
         /// <summary>
-        /// Добавляет тренировку и возвращает информацию о нём
+        /// Добавляет тренировку и возвращает информацию о ней
         /// </summary>
         /// <param name="userWhoTrainingId">Id пользователя, к которому надо добавить тренировку</param>
         /// <param name="exercise">Упражнение</param>
@@ -62,7 +62,7 @@ namespace RubicProg.API.Controllers
         }
 
         /// <summary>
-        /// Обновляет информацию тренировки
+        /// Обновляет информацию тренировки и возвращает информацию о ней
         /// </summary>
         /// <param name="workoutPlanId">Идентификатор тренировки</param>
         /// <param name="exercise">Упражнение</param>
@@ -89,7 +89,7 @@ namespace RubicProg.API.Controllers
         }
 
         /// <summary>
-        /// Возвращает тренировкe с указанным id
+        /// Возвращает тренировку с указанным id
         /// </summary>
         /// <param name="workoutPlanId">Идентификатор тренировки</param>
         [ProducesResponseType(typeof(WorkoutInformationDto), (int)HttpStatusCode.OK)]
@@ -137,9 +137,28 @@ namespace RubicProg.API.Controllers
         }
 
         /// <summary>
+        /// Возвращает количество тренировок у указанного пользователя c userId
+        /// </summary>
+        /// <param name="userId">Идентификатор пользователя</param>
+        [ProducesResponseType(typeof(int), (int)HttpStatusCode.OK)]
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]
+        [HttpGet("[action]/{userId}/{count}/{skipCount}")]
+        public async Task<ActionResult<int>> GetWorkoutCount(int userId)
+        {
+            try
+            {
+                return Ok(await _workoutService.GetWorkoutCount(userId));
+            }
+            catch (NotFoundException e)
+            {
+                return NotFound(e.Message);
+            }
+        }
+
+        /// <summary>
         /// Проверяет, существует ли тренировка с указанным id
         /// </summary>
-        /// <param name="workoutPlanId">Идентификатор пользователя</param>
+        /// <param name="workoutPlanId">Идентификатор тренировки</param>
         [ProducesResponseType(typeof(bool), (int)HttpStatusCode.OK)]
         [HttpGet("[action]/{workoutPlanId}")]
         public async Task<ActionResult<bool>> DoesExistWorkout(int workoutPlanId)
@@ -159,6 +178,25 @@ namespace RubicProg.API.Controllers
             try
             {
                 return Ok(await _workoutService.DeleteWorkoutPlan(workoutPlanId));
+            }
+            catch (NotFoundException e)
+            {
+                return NotFound(e.Message);
+            }
+        }
+
+        /// <summary>
+        /// Возвращает получилось ли удалить все тренировки у пользователя с указанным id или нет
+        /// </summary>
+        /// <param name="userId">Идентификатор пользователя</param>
+        [ProducesResponseType(typeof(bool), (int)HttpStatusCode.OK)]
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]
+        [HttpDelete("[action]/{userId}")]
+        public async Task<ActionResult<bool>> DeleteAllWorkoutPlan(int userId)
+        {
+            try
+            {
+                return Ok(await _workoutService.DeleteAllWorkoutPlan(userId));
             }
             catch (NotFoundException e)
             {

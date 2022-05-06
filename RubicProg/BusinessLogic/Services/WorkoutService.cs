@@ -91,6 +91,21 @@ namespace RubicProg.BusinessLogic.Services
             return ConvertToWorkoutInfoBloList(workouts);
         }
 
+        public async Task<int> GetWorkoutCount(int userId)
+        {
+            bool doesExsist = await _context.Users
+                .AnyAsync(x => x.Id == userId);
+
+            if (doesExsist == false)
+                throw new NotFoundException($"Пользователя с id {userId} нет");
+
+            int workoutCount = await _context.Workouts
+                .Where(e => e.UserWhoTrainingId == userId)
+                .CountAsync();
+
+            return workoutCount;
+        }
+
         public async Task<bool> DoesExistWorkout(int workoutPlanId)
         {
             bool result = await _context.Workouts.AnyAsync(y => y.Id == workoutPlanId);
@@ -111,6 +126,38 @@ namespace RubicProg.BusinessLogic.Services
                 await _context.SaveChangesAsync();
                 return true;
             }
+            return false;
+        }
+
+        public async Task<bool> DeleteAllWorkoutPlan(int userId)
+        {
+            bool doesExsist = await _context.Users
+                .AnyAsync(x => x.Id == userId);
+
+            if (doesExsist == false)
+                throw new NotFoundException($"Пользователя с id {userId} нет");
+
+            List<WorkoutRto> workouts = await _context.Workouts
+                .Where(e => e.UserWhoTrainingId == userId)
+                .ToListAsync();
+
+            if (workouts.Count == 0 || workouts == null)
+                throw new NotFoundException($"У пользователя с id {userId} нет тренировок");
+
+            foreach (WorkoutRto workout in workouts)
+            {
+                _context.Workouts.Remove(workout);
+            }
+
+            await _context.SaveChangesAsync();
+
+            List<WorkoutRto> newWorkouts= await _context.Workouts
+                .Where(e => e.UserWhoTrainingId == userId)
+                .ToListAsync();
+
+            if (newWorkouts.Count == 0 || newWorkouts == null)
+                return true;
+
             return false;
         }
 

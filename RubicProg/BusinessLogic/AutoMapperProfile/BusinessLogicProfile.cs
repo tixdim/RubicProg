@@ -21,7 +21,6 @@ namespace RubicProg.BusinessLogic.AutoMapperProfile
                 .ForMember(x => x.Id, x => x.MapFrom(m => m.Id))
                 .ForMember(x => x.Email, x => x.MapFrom(m => m.Email))
                 .ForMember(x => x.Nickname, x => x.MapFrom(m => m.Nickname))
-                .ForMember(x => x.Password, x => x.MapFrom(m => m.Password))
                 .ForMember(x => x.IsBoy, x => x.MapFrom(m => m.IsBoy))
                 .ForMember(x => x.Name, x => x.MapFrom(m => m.Name))
                 .ForMember(x => x.Surname, x => x.MapFrom(m => m.Surname))

@@ -53,6 +53,8 @@ namespace RubicProg.BusinessLogic.Services
 
         public async Task<UserInformationBlo> AuthenticationUser(UserIdentityBlo userIdentityBlo)
         {
+            if (userIdentityBlo.Email == null || userIdentityBlo.Password == null) throw new BadRequestException($"Вы заполнили не все поля");
+
             UserRto user = await _context.Users
                 .AsNoTracking()
                 .FirstOrDefaultAsync(p => p.Email == userIdentityBlo.Email! && p.Password == userIdentityBlo.Password!);

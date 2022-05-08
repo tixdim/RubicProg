@@ -24,10 +24,10 @@ namespace RubicProg.BusinessLogic.Services
 
         public async Task<WorkoutInformationBlo> AddWorkoutPlan(WorkoutPlanAddBlo workoutPlanAddBlo)
         {
-            bool result = await _context.Users
-                .AnyAsync(x => x.Id == workoutPlanAddBlo.UserWhoTrainingId);
+            UserRto userRto = await _context.Users
+                .FirstOrDefaultAsync(x => x.Id == workoutPlanAddBlo.UserWhoTrainingId);
 
-            if (result == false) 
+            if (userRto == null) 
                 throw new NotFoundException($"Пользователя с id {workoutPlanAddBlo.UserWhoTrainingId} нет");
 
             if (workoutPlanAddBlo == null)
@@ -45,6 +45,7 @@ namespace RubicProg.BusinessLogic.Services
             _context.Workouts.Add(workout);
             await _context.SaveChangesAsync();
 
+            workout.UserWhoTraining = userRto;
             return ConvertToWorkoutInfoBlo(workout);
         }
 

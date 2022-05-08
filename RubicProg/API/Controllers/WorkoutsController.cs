@@ -41,7 +41,7 @@ namespace RubicProg.API.Controllers
         public async Task<ActionResult<WorkoutInformationDto>> AddWorkoutPlan(WorkoutPlanAddDto workoutPlanAddDto)
         {
             WorkoutPlanAddBlo workoutPlanAddBlo = _mapper.Map<WorkoutPlanAddBlo>(workoutPlanAddDto);
-            WorkoutInformationBlo workoutInformationBlo;
+            WorkoutInformationBlo workoutInformationBlo = new WorkoutInformationBlo();
             try
             {
                 workoutInformationBlo = await _workoutService.AddWorkoutPlan(workoutPlanAddBlo);
@@ -142,7 +142,7 @@ namespace RubicProg.API.Controllers
         /// <param name="userId">Идентификатор пользователя</param>
         [ProducesResponseType(typeof(int), (int)HttpStatusCode.OK)]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
-        [HttpGet("[action]/{userId}/{count}/{skipCount}")]
+        [HttpGet("[action]/{userId}")]
         public async Task<ActionResult<int>> GetWorkoutCount(int userId)
         {
             try

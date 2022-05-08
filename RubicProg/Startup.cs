@@ -50,6 +50,7 @@ namespace RubicProg
             });
 
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IWorkoutService, WorkoutService>();
 
             services.AddCors();
         }

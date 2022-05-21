@@ -77,7 +77,7 @@ namespace RubicProg
                 ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
             });
 
-            app.UseCors(p => p.AllowAnyMethod().AllowAnyHeader());
+            app.UseCors(p => p.AllowAnyMethod().AllowAnyHeader().AllowAnyOrigin());
 
             app.UseAuthorization();
 

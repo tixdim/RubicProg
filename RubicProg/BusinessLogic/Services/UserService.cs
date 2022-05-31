@@ -77,12 +77,11 @@ namespace RubicProg.BusinessLogic.Services
             UserRto user = await _context.Users.FirstOrDefaultAsync(y => y.Id == userId);
             if (user == null) throw new NotFoundException($"Пользователя с id {userId} нет");
 
-            user.Nickname = userUpdateBlo.Nickname == null ? user.Nickname : userUpdateBlo.Nickname;
-            user.Password = userUpdateBlo.Password == null ? user.Password : userUpdateBlo.Password;
+            user.Nickname = (userUpdateBlo.Nickname == null || userUpdateBlo.Nickname == "") ? user.Nickname : userUpdateBlo.Nickname;
             user.IsBoy = userUpdateBlo.IsBoy;
-            user.Name = userUpdateBlo.Name == null ? user.Name : userUpdateBlo.Name;
-            user.Surname = userUpdateBlo.Surname == null ? user.Surname : userUpdateBlo.Surname;
-            user.AvatarUrl = userUpdateBlo.AvatarUrl == null ? user.AvatarUrl : userUpdateBlo.AvatarUrl;
+            user.Name = (userUpdateBlo.Name == null || userUpdateBlo.Name == "") ? user.Name : userUpdateBlo.Name;
+            user.Surname = (userUpdateBlo.Surname == null || userUpdateBlo.Surname == "") ? user.Surname : userUpdateBlo.Surname;
+            user.AvatarUrl = (userUpdateBlo.AvatarUrl == null || userUpdateBlo.AvatarUrl == "") ? user.AvatarUrl : userUpdateBlo.AvatarUrl;
 
             await _context.SaveChangesAsync();
 

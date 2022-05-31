@@ -64,7 +64,6 @@ namespace RubicProg
             }
 
             app.UseSwagger();
-
             app.UseSwaggerUI(c => 
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "RubicProg V1");
@@ -77,7 +76,7 @@ namespace RubicProg
                 ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
             });
 
-            app.UseCors(p => p.AllowAnyMethod().AllowAnyHeader());
+            app.UseCors(p => p.AllowAnyMethod().AllowAnyHeader().AllowAnyOrigin());
 
             app.UseAuthorization();
 

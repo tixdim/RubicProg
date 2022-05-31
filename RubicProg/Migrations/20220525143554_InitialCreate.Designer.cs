@@ -9,7 +9,7 @@ using RubicProg.DataAccess.Context;
 namespace RubicProg.Migrations
 {
     [DbContext(typeof(DataBaseContext))]
-    [Migration("20220520150036_InitialCreate")]
+    [Migration("20220525143554_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

@@ -32,6 +32,7 @@ namespace RubicProg.API.Controllers
         /// </summary>
         /// <param name="userWhoTrainingId">Id пользователя, к которому надо добавить тренировку</param>
         /// <param name="exercise">Упражнение</param>
+        /// <param name="isDone">Сделано ли упражнение</param>
         /// <param name="workoutTime">Время всей тренировки</param>
         /// <param name="startWorkoutDate">Время начала тренировки</param>
         [ProducesResponseType(typeof(WorkoutInformationDto), (int)HttpStatusCode.Created)]

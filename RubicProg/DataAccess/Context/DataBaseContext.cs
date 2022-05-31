@@ -12,7 +12,6 @@ namespace RubicProg.DataAccess.Context
         }
 
         public DbSet<UserRto> Users { get; set; }
-/*        public DbSet<ProfileUserRto> ProfileUsers { get; set; }*/
         public DbSet<WorkoutRto> Workouts { get; set; }
     }
 }

@@ -38,7 +38,7 @@ namespace RubicProg.BusinessLogic.Services
                 UserWhoTrainingId = workoutPlanAddBlo.UserWhoTrainingId,
                 Exercise = workoutPlanAddBlo.Exercise,
                 WorkoutTime = workoutPlanAddBlo.WorkoutTime,
-                IsDone = true,
+                IsDone = workoutPlanAddBlo.IsDone,
                 StartWorkoutDate = workoutPlanAddBlo.StartWorkoutDate
             };
 

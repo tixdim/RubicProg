@@ -88,6 +88,8 @@ namespace RubicProg.BusinessLogic.Services
             if (workouts.Count == 0)
                 throw new NotFoundException($"У пользователя с id {userId} нет тренировок");
 
+            workouts.Reverse();
+
             return ConvertToWorkoutInfoBloList(workouts);
         }
 

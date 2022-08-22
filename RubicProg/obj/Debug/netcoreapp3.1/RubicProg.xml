@@ -55,13 +55,6 @@
             <param name="userId">Идентификатор пользователя</param>
             <param name="userUpdateWithNewPasswordDto">Объект обновления информации пользователя</param>
         </member>
-        <member name="M:RubicProg.API.Controllers.UsersController.UpdateAvatar(System.Int32,RubicProg.API.Models.UserUpdateAvatarDto)">
-            <summary>
-            Обновляет только аватарку пользователя приложения
-            </summary>
-            <param name="userId">Идентификатор пользователя</param>
-            <param name="userUpdateAvatarDto">Объект аватарки пользователя</param>
-        </member>
         <member name="M:RubicProg.API.Controllers.UsersController.DoesExistUser(System.Int32)">
             <summary>
             Проверяет, существует ли пользователь с указанным id
@@ -88,14 +81,6 @@
             <param name="isDone">Сделано ли упражнение</param>
             <param name="workoutTime">Время всей тренировки</param>
             <param name="startWorkoutDate">Время начала тренировки</param>
-        </member>
-        <member name="M:RubicProg.API.Controllers.WorkoutsController.UpdateWorkoutPlan(System.Int32,RubicProg.API.Models.WorkoutPlanUpdateDto)">
-            <summary>
-            Обновляет информацию тренировки и возвращает информацию о ней
-            </summary>
-            <param name="workoutPlanId">Идентификатор тренировки</param>
-            <param name="exercise">Упражнение</param>
-            <param name="workoutTime">Время начала</param>
         </member>
         <member name="M:RubicProg.API.Controllers.WorkoutsController.GetWorkoutPlan(System.Int32)">
             <summary>

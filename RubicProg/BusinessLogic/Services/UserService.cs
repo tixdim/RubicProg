@@ -27,7 +27,10 @@ namespace RubicProg.BusinessLogic.Services
             if (result == true) throw new BadRequestException($"Пользователь с почтой {userRegistrBlo.Email} уже зарегистрирован");
 
             if (userRegistrBlo.Email == null || userRegistrBlo.Nickname == null || userRegistrBlo.FirstPassword == null ||
-                userRegistrBlo.SecondPassword == null || userRegistrBlo.Name == null || userRegistrBlo.Surname == null) throw new BadRequestException($"Вы заполнили не все поля");
+                userRegistrBlo.SecondPassword == null || userRegistrBlo.Name == null || userRegistrBlo.Surname == null ||
+                userRegistrBlo.Email == "" || userRegistrBlo.Nickname == "" || userRegistrBlo.FirstPassword == "" ||
+                userRegistrBlo.SecondPassword == "" || userRegistrBlo.Name == "" || userRegistrBlo.Surname == "") 
+                throw new BadRequestException($"Вы заполнили не все поля");
 
             if (userRegistrBlo.FirstPassword != userRegistrBlo.SecondPassword) throw new BadRequestException($"Пароли не совпадают");
 
@@ -41,8 +44,7 @@ namespace RubicProg.BusinessLogic.Services
                 IsBoy = userRegistrBlo.IsBoy,
                 Name = userRegistrBlo.Name,
                 Surname = userRegistrBlo.Surname,
-                DateRegistration = DateTime.Now,
-                AvatarUrl = ""
+                DateRegistration = DateTime.Now
             };
             
             _context.Users.Add(user);
@@ -81,7 +83,6 @@ namespace RubicProg.BusinessLogic.Services
             user.IsBoy = userUpdateBlo.IsBoy;
             user.Name = (userUpdateBlo.Name == null || userUpdateBlo.Name == "") ? user.Name : userUpdateBlo.Name;
             user.Surname = (userUpdateBlo.Surname == null || userUpdateBlo.Surname == "") ? user.Surname : userUpdateBlo.Surname;
-            user.AvatarUrl = (userUpdateBlo.AvatarUrl == null || userUpdateBlo.AvatarUrl == "") ? user.AvatarUrl : userUpdateBlo.AvatarUrl;
 
             await _context.SaveChangesAsync();
 
@@ -90,19 +91,16 @@ namespace RubicProg.BusinessLogic.Services
 
         public async Task<UserInformationBlo> UpdatePasswordWithOldUser(int userId, UserUpdateWithOldPasswordBlo userUpdateWithOldPasswordBlo)
         {
-            bool result = await _context.Users.AnyAsync(y => y.Id == userId);
-            if (result == false) throw new NotFoundException($"Пользователя с id {userId} нет");
+            UserRto user = await _context.Users.FirstOrDefaultAsync(y => y.Id == userId);
+            if (user == null) throw new NotFoundException($"Пользователя с id {userId} нет");
 
             if (userUpdateWithOldPasswordBlo.OldPassword == null || userUpdateWithOldPasswordBlo.NewPassword == null)
                 throw new BadRequestException("Вы заполнили не все поля");
 
-            UserRto user = await _context.Users.FirstOrDefaultAsync(y => y.Password == userUpdateWithOldPasswordBlo.OldPassword);
-            if (user == null) throw new BadRequestException($"Неправильно введён старый пароль");
-
             if (userUpdateWithOldPasswordBlo.NewPassword.Length < 6)
                 throw new BadRequestException("Длина нового пароля должна быть не менее 6 символов");
 
-            
+            if (user.Password != userUpdateWithOldPasswordBlo.OldPassword) throw new BadRequestException("Неправильно введён старый пароль");
 
             user.Password = userUpdateWithOldPasswordBlo.NewPassword;
 
@@ -129,7 +127,7 @@ namespace RubicProg.BusinessLogic.Services
             return true;
         }
 
-        public async Task<string> UpdateAvatar(int userId, string avatarUrl)
+/*        public async Task<string> UpdateAvatar(int userId, string avatarUrl)
         {
             UserRto user = await _context.Users.FirstOrDefaultAsync(y => y.Id == userId);
 
@@ -141,7 +139,7 @@ namespace RubicProg.BusinessLogic.Services
             await _context.SaveChangesAsync();
 
             return avatarUrl;
-        }
+        }*/
 
         public async Task<bool> DoesExistUser(int userId)
         {

@@ -39,7 +39,7 @@ namespace RubicProg.BusinessLogic.Services
                 Exercise = workoutPlanAddBlo.Exercise,
                 WorkoutTime = workoutPlanAddBlo.WorkoutTime,
                 IsDone = workoutPlanAddBlo.IsDone,
-                StartWorkoutDate = workoutPlanAddBlo.StartWorkoutDate
+                StartWorkoutDate = DateTime.UtcNow
             };
 
             _context.Workouts.Add(workout);
@@ -49,7 +49,7 @@ namespace RubicProg.BusinessLogic.Services
             return ConvertToWorkoutInfoBlo(workout);
         }
 
-        public async Task<WorkoutInformationBlo> UpdateWorkoutPlan(int workoutPlanId, WorkoutPlanUpdateBlo workoutPlanUpdateBlo)
+/*        public async Task<WorkoutInformationBlo> UpdateWorkoutPlan(int workoutPlanId, WorkoutPlanUpdateBlo workoutPlanUpdateBlo)
         {
             WorkoutRto workout = await _context.Workouts.FirstOrDefaultAsync(x => x.Id == workoutPlanId);
             if (workout == null) throw new NotFoundException($"Тренировки с id {workoutPlanId} нет");
@@ -60,7 +60,7 @@ namespace RubicProg.BusinessLogic.Services
             await _context.SaveChangesAsync();
 
             return ConvertToWorkoutInfoBlo(workout);
-        }
+        }*/
 
         public async Task<WorkoutInformationBlo> GetWorkoutPlan(int workoutPlanId)
         {

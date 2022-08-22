@@ -11,7 +11,7 @@ namespace RubicProg.BusinessLogic.AutoMapperProfile
         {
             CreateMap<WorkoutRto, WorkoutInformationBlo>()
                 .ForMember(x => x.Id, x => x.MapFrom(m => m.Id))
-                .ForMember(x => x.UserWhoTraining, x => x.MapFrom(m => m.UserWhoTraining))
+                // .ForMember(x => x.UserWhoTraining, x => x.MapFrom(m => m.UserWhoTraining))
                 .ForMember(x => x.Exercise, x => x.MapFrom(m => m.Exercise))
                 .ForMember(x => x.WorkoutTime, x => x.MapFrom(m => m.WorkoutTime))
                 .ForMember(x => x.IsDone, x => x.MapFrom(m => m.IsDone))
@@ -24,8 +24,7 @@ namespace RubicProg.BusinessLogic.AutoMapperProfile
                 .ForMember(x => x.IsBoy, x => x.MapFrom(m => m.IsBoy))
                 .ForMember(x => x.Name, x => x.MapFrom(m => m.Name))
                 .ForMember(x => x.Surname, x => x.MapFrom(m => m.Surname))
-                .ForMember(x => x.DateRegistration, x => x.MapFrom(m => m.DateRegistration))
-                .ForMember(x => x.AvatarUrl, x => x.MapFrom(m => m.AvatarUrl));
+                .ForMember(x => x.DateRegistration, x => x.MapFrom(m => m.DateRegistration));
 
             CreateMap<UserRegistrDto, UserRegistrBlo>();
 
@@ -41,11 +40,9 @@ namespace RubicProg.BusinessLogic.AutoMapperProfile
 
             CreateMap<WorkoutPlanAddDto, WorkoutPlanAddBlo>();
 
-            CreateMap<WorkoutPlanUpdateDto, WorkoutPlanUpdateBlo>();
-
             CreateMap<WorkoutInformationBlo, WorkoutInformationDto>()
                 .ForMember(x => x.Id, x => x.MapFrom(m => m.Id))
-                .ForMember(x => x.UserWhoTraining, x => x.MapFrom(m => m.UserWhoTraining))
+                // .ForMember(x => x.UserWhoTraining, x => x.MapFrom(m => m.UserWhoTraining))
                 .ForMember(x => x.Exercise, x => x.MapFrom(m => m.Exercise))
                 .ForMember(x => x.IsDone, x => x.MapFrom(m => m.IsDone))
                 .ForMember(x => x.WorkoutTime, x => x.MapFrom(m => m.WorkoutTime))

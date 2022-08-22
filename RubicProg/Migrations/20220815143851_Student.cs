@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace RubicProg.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class Student : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -19,8 +19,7 @@ namespace RubicProg.Migrations
                     IsBoy = table.Column<bool>(nullable: false),
                     Name = table.Column<string>(nullable: false),
                     Surname = table.Column<string>(nullable: false),
-                    DateRegistration = table.Column<DateTime>(nullable: false),
-                    AvatarUrl = table.Column<string>(nullable: true)
+                    DateRegistration = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -34,7 +33,7 @@ namespace RubicProg.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     UserWhoTrainingId = table.Column<int>(nullable: false),
-                    WorkoutTime = table.Column<DateTime>(nullable: false),
+                    WorkoutTime = table.Column<int>(nullable: false),
                     Exercise = table.Column<string>(nullable: true),
                     IsDone = table.Column<bool>(nullable: false),
                     StartWorkoutDate = table.Column<DateTime>(nullable: false)

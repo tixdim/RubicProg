@@ -17,7 +17,6 @@ namespace RubicProg.DataAccess.Core.Models
         [Required] public string Name { get; set; }
         [Required] public string Surname { get; set; }
         public DateTime DateRegistration { get; set; }
-        public string? AvatarUrl { get; set; }
 
         public List<WorkoutRto> Workouts { get; set; }
     }

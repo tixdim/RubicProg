@@ -9,7 +9,7 @@ namespace RubicProg.DataAccess.Core.Models
         public int Id { get; set; }
         public int UserWhoTrainingId { get; set; }
         public UserRto UserWhoTraining { get; set; }
-        public DateTime WorkoutTime { get; set; }
+        public int WorkoutTime { get; set; }
         public string Exercise { get; set; }
         public bool IsDone { get; set; }
         public DateTime StartWorkoutDate { get; set; }

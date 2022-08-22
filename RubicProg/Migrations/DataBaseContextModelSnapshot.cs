@@ -22,9 +22,6 @@ namespace RubicProg.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("AvatarUrl")
-                        .HasColumnType("TEXT");
-
                     b.Property<DateTime>("DateRegistration")
                         .HasColumnType("TEXT");
 
@@ -74,8 +71,8 @@ namespace RubicProg.Migrations
                     b.Property<int>("UserWhoTrainingId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<DateTime>("WorkoutTime")
-                        .HasColumnType("TEXT");
+                    b.Property<int>("WorkoutTime")
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
 

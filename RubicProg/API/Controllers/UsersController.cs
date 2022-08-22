@@ -187,7 +187,7 @@ namespace RubicProg.API.Controllers
             }
         }
 
-        /// <summary>
+/*        /// <summary>
         /// Обновляет только аватарку пользователя приложения
         /// </summary>
         /// <param name="userId">Идентификатор пользователя</param>
@@ -205,7 +205,7 @@ namespace RubicProg.API.Controllers
             {
                 return NotFound(e.Message);
             }
-        }
+        }*/
 
         /// <summary>
         /// Проверяет, существует ли пользователь с указанным id

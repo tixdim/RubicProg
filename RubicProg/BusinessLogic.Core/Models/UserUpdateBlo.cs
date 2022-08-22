@@ -9,6 +9,5 @@ namespace RubicProg.BusinessLogic.Core.Models
         public bool IsBoy { get; set; }
         public string? Name { get; set; }
         public string? Surname { get; set; }
-        public string? AvatarUrl { get; set; }
     }
 }

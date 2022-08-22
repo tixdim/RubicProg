@@ -9,8 +9,8 @@ using RubicProg.DataAccess.Context;
 namespace RubicProg.Migrations
 {
     [DbContext(typeof(DataBaseContext))]
-    [Migration("20220525143554_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20220815143851_Student")]
+    partial class Student
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -23,9 +23,6 @@ namespace RubicProg.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
-
-                    b.Property<string>("AvatarUrl")
-                        .HasColumnType("TEXT");
 
                     b.Property<DateTime>("DateRegistration")
                         .HasColumnType("TEXT");
@@ -76,8 +73,8 @@ namespace RubicProg.Migrations
                     b.Property<int>("UserWhoTrainingId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<DateTime>("WorkoutTime")
-                        .HasColumnType("TEXT");
+                    b.Property<int>("WorkoutTime")
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
 

@@ -7,7 +7,7 @@ namespace RubicProg.BusinessLogic.Core.Interfaces
     public interface IWorkoutService
     {
         Task<WorkoutInformationBlo> AddWorkoutPlan(WorkoutPlanAddBlo workoutPlanAddBlo);
-        Task<WorkoutInformationBlo> UpdateWorkoutPlan(int workoutPlanId, WorkoutPlanUpdateBlo workoutPlanUpdateBlo);
+/*        Task<WorkoutInformationBlo> UpdateWorkoutPlan(int workoutPlanId, WorkoutPlanUpdateBlo workoutPlanUpdateBlo);*/
         Task<WorkoutInformationBlo> GetWorkoutPlan(int workoutPlanId);
         Task<List<WorkoutInformationBlo>> GetAllWorkoutPlans(int userId, int count, int skipCount);
         Task<int> GetWorkoutCount(int userId);

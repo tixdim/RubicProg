@@ -62,7 +62,7 @@ namespace RubicProg.API.Controllers
             return Created("", ConvertToWorkoutInformationDto(workoutInformationBlo));
         }
 
-        /// <summary>
+/*        /// <summary>
         /// Обновляет информацию тренировки и возвращает информацию о ней
         /// </summary>
         /// <param name="workoutPlanId">Идентификатор тренировки</param>
@@ -87,7 +87,7 @@ namespace RubicProg.API.Controllers
 
             return Ok(ConvertToWorkoutInformationDto(workoutInformationBlo));
 
-        }
+        }*/
 
         /// <summary>
         /// Возвращает тренировку с указанным id

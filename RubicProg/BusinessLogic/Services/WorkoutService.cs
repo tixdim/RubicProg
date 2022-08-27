@@ -39,7 +39,7 @@ namespace RubicProg.BusinessLogic.Services
                 Exercise = workoutPlanAddBlo.Exercise,
                 WorkoutTime = workoutPlanAddBlo.WorkoutTime,
                 IsDone = workoutPlanAddBlo.IsDone,
-                StartWorkoutDate = DateTime.UtcNow
+                StartWorkoutDate = DateTime.Now
             };
 
             _context.Workouts.Add(workout);

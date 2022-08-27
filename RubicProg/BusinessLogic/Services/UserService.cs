@@ -23,7 +23,10 @@ namespace RubicProg.BusinessLogic.Services
         public async Task<UserInformationBlo> RegistrationUser(UserRegistrBlo userRegistrBlo)
         {
             bool result = await _context.Users.AnyAsync(y => y.Email == userRegistrBlo.Email);
-            
+
+            if (!userRegistrBlo.Email.Contains("@")) throw new BadRequestException($"Вы ввели некорректно почту");
+
+
             if (result == true) throw new BadRequestException($"Пользователь с почтой {userRegistrBlo.Email} уже зарегистрирован");
 
             if (userRegistrBlo.Email == null || userRegistrBlo.Nickname == null || userRegistrBlo.FirstPassword == null ||
